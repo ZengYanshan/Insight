@@ -7,4 +7,9 @@ row data:
 2  North America  1480
 3          Other   300
 insights:
-{'point': [(Type: top2, Score: 0.37185929648241206, Category: point, Description: The Sale proportion of North America and Japan is significantly higher than that of other Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.37185929648241206
+Category: point
+Description: The Sale proportion of North America and Japan is significantly higher than that of other Locations.)
+], 'shape': [], 'compound': []}

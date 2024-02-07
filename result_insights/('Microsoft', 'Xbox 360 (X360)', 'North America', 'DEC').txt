@@ -11,4 +11,9 @@ row data:
 6  2019     0
 7  2020     0
 insights:
-{'point': [], 'shape': [(Type: trend, Score: 0.7209934114562746, Category: shape, Description: Sales exhibit a clear downward trend over the Years from 2013 to 2020.)], 'compound': []}
+{'point': [], 'shape': [
+(Type: trend
+Score: 0.7209934114562746
+Category: shape
+Description: Sales exhibit a clear downward trend over the Years from 2013 to 2020.)
+], 'compound': []}

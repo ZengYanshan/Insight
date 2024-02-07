@@ -11,4 +11,9 @@ row data:
 6  Xbox One (XOne)  North America   610
 7  Xbox One (XOne)          Other   150
 insights:
-{'point': [(Type: top2, Score: 0.45864661654135336, Category: point, Description: The Sale proportion of Xbox One (XOne) and Xbox One (XOne) is significantly higher than that of other Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.45864661654135336
+Category: point
+Description: The Sale proportion of Xbox One (XOne) and Xbox One (XOne) is significantly higher than that of other Brands.)
+], 'shape': [], 'compound': []}

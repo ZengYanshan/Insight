@@ -11,4 +11,9 @@ row data:
 6  2019  1780
 7  2020  1260
 insights:
-{'point': [], 'shape': [(Type: trend, Score: 0.7384067214272382, Category: shape, Description: Sales exhibit a clear upward trend over the Years from 2013 to 2020.)], 'compound': []}
+{'point': [], 'shape': [
+(Type: trend
+Score: 0.7384067214272382
+Category: shape
+Description: Sales exhibit a clear upward trend over the Years from 2013 to 2020.)
+], 'compound': []}

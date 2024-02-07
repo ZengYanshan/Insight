@@ -7,4 +7,9 @@ row data:
 2    Sony  North America  3620
 3    Sony          Other  1320
 insights:
-{'point': [(Type: top2, Score: 0.41043083900226757, Category: point, Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.41043083900226757
+Category: point
+Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

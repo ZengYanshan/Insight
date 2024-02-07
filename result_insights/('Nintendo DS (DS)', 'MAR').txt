@@ -35,4 +35,9 @@ row data:
 30  Nintendo          Other  2019     0
 31  Nintendo          Other  2020     0
 insights:
-{'point': [(Type: top2, Score: 0.5949367088607594, Category: point, Description: The Sale proportion of Nintendo and Nintendo is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.5949367088607594
+Category: point
+Description: The Sale proportion of Nintendo and Nintendo is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

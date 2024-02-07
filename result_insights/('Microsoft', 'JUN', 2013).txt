@@ -11,4 +11,9 @@ row data:
 6  Xbox One (XOne)  North America     0
 7  Xbox One (XOne)          Other     0
 insights:
-{'point': [(Type: top2, Score: 0.5464684014869888, Category: point, Description: The Sale proportion of Xbox 360 (X360) and Xbox 360 (X360) is significantly higher than that of other Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.5464684014869888
+Category: point
+Description: The Sale proportion of Xbox 360 (X360) and Xbox 360 (X360) is significantly higher than that of other Brands.)
+], 'shape': [], 'compound': []}

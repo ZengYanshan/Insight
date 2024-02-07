@@ -23,4 +23,9 @@ row data:
 18          Wii U (WiiU)  North America    90
 19          Wii U (WiiU)          Other     0
 insights:
-{'point': [(Type: top2, Score: 0.3783783783783784, Category: point, Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3783783783783784
+Category: point
+Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.)
+], 'shape': [], 'compound': []}

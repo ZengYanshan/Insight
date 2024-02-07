@@ -7,4 +7,9 @@ row data:
 2  North America   910
 3          Other    80
 insights:
-{'point': [(Type: dominance, Score: 0.5652173913043478, Category: point, Description: The Sale of North America dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5652173913043478
+Category: point
+Description: The Sale of North America dominates among all Locations.)
+], 'shape': [], 'compound': []}

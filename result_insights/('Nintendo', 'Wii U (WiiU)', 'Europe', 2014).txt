@@ -7,4 +7,9 @@ row data:
 2    MAR   360
 3    SEP   340
 insights:
-{'point': [(Type: top2, Score: 0.3956043956043956, Category: point, Description: The Sale proportion of MAR and SEP is significantly higher than that of other Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3956043956043956
+Category: point
+Description: The Sale proportion of MAR and SEP is significantly higher than that of other Seasons.)
+], 'shape': [], 'compound': []}

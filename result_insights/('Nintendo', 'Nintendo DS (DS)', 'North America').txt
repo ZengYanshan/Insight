@@ -35,4 +35,9 @@ row data:
 30    SEP  2019     0
 31    SEP  2020     0
 insights:
-{'point': [(Type: dominance, Score: 0.5108695652173914, Category: point, Description: The Sale of MAR dominates among all Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5108695652173914
+Category: point
+Description: The Sale of MAR dominates among all Seasons.)
+], 'shape': [], 'compound': []}

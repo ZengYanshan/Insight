@@ -11,4 +11,9 @@ row data:
 6  Microsoft  2019     0
 7  Microsoft  2020     0
 insights:
-{'point': [(Type: top2, Score: 0.3853658536585366, Category: point, Description: The Sale proportion of Microsoft and Microsoft is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3853658536585366
+Category: point
+Description: The Sale proportion of Microsoft and Microsoft is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

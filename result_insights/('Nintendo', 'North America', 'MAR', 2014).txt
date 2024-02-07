@@ -8,4 +8,9 @@ row data:
 3             Wii (Wii)   210
 4          Wii U (WiiU)   850
 insights:
-{'point': [(Type: dominance, Score: 0.6533742331288344, Category: point, Description: The Sale of Nintendo 3DS (3DS) dominates among all Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.6533742331288344
+Category: point
+Description: The Sale of Nintendo 3DS (3DS) dominates among all Brands.)
+], 'shape': [], 'compound': []}

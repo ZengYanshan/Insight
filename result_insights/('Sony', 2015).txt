@@ -51,4 +51,9 @@ row data:
 46  PlayStation Vita (PSV)          Other    MAR   150
 47  PlayStation Vita (PSV)          Other    SEP   440
 insights:
-{'point': [(Type: outlier, Score: 3.3497400256107417, Category: point, Description: The Sale of Brand PlayStation 4 (PS4) of Location North America of Season MAR is an outlier, which is significantly higher than the normal Sale of other Brand in the corresponding Location, Sale.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier
+Score: 3.3497400256107417
+Category: point
+Description: The Sale of Brand PlayStation 4 (PS4) of Location North America of Season MAR is an outlier, which is significantly higher than the normal Sale of other Brands in the corresponding Location, Sale.)
+], 'shape': [], 'compound': []}

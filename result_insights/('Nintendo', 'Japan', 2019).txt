@@ -23,4 +23,9 @@ row data:
 18          Wii U (WiiU)    MAR     0
 19          Wii U (WiiU)    SEP     0
 insights:
-{'point': [(Type: top2, Score: 0.33271028037383177, Category: point, Description: The Sale proportion of Nintendo Switch (NS) and Nintendo Switch (NS) is significantly higher than that of other Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.33271028037383177
+Category: point
+Description: The Sale proportion of Nintendo Switch (NS) and Nintendo Switch (NS) is significantly higher than that of other Brands.)
+], 'shape': [], 'compound': []}

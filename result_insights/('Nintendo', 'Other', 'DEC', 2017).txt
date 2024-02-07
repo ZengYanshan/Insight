@@ -8,4 +8,9 @@ row data:
 3             Wii (Wii)   200
 4          Wii U (WiiU)    10
 insights:
-{'point': [(Type: top2, Score: 0.5714285714285714, Category: point, Description: The Sale proportion of Nintendo Switch (NS) and Wii (Wii) is significantly higher than that of other Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.5714285714285714
+Category: point
+Description: The Sale proportion of Nintendo Switch (NS) and Wii (Wii) is significantly higher than that of other Brands.)
+], 'shape': [], 'compound': []}

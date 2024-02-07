@@ -7,4 +7,9 @@ row data:
 2  North America    10
 3          Other    20
 insights:
-{'point': [(Type: dominance, Score: 0.5294117647058824, Category: point, Description: The Sale of Japan dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5294117647058824
+Category: point
+Description: The Sale of Japan dominates among all Locations.)
+], 'shape': [], 'compound': []}

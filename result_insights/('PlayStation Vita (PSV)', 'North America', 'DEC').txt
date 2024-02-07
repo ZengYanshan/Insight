@@ -11,4 +11,9 @@ row data:
 6    Sony  2019    80
 7    Sony  2020     0
 insights:
-{'point': [(Type: top2, Score: 0.32, Category: point, Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.32
+Category: point
+Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

@@ -7,4 +7,9 @@ row data:
 2  Microsoft    MAR  2430
 3  Microsoft    SEP   390
 insights:
-{'point': [(Type: dominance, Score: 0.5051975051975052, Category: point, Description: The Sale of Microsoft dominates among all Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5051975051975052
+Category: point
+Description: The Sale of Microsoft dominates among all Companys.)
+], 'shape': [], 'compound': []}

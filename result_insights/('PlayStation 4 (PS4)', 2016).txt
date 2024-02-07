@@ -19,4 +19,9 @@ row data:
 14    Sony          Other    MAR  1320
 15    Sony          Other    SEP   450
 insights:
-{'point': [(Type: outlier, Score: 2.5253299544201986, Category: point, Description: The Sale of Company Sony of Location Europe of Season MAR is an outlier, which is significantly higher than the normal Sale of other Company in the corresponding Location, Sale.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier
+Score: 2.5253299544201986
+Category: point
+Description: The Sale of Company Sony of Location Europe of Season MAR is an outlier, which is significantly higher than the normal Sale of other Companys in the corresponding Location, Sale.)
+], 'shape': [], 'compound': []}

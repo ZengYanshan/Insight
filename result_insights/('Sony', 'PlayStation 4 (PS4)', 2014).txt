@@ -19,4 +19,9 @@ row data:
 14          Other    MAR   600
 15          Other    SEP   460
 insights:
-{'point': [(Type: outlier, Score: 2.2144065644341837, Category: point, Description: The Sale of Location North America of Season MAR is an outlier, which is significantly higher than the normal Sale of other Location in the corresponding Sale.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier
+Score: 2.2144065644341837
+Category: point
+Description: The Sale of Location North America of Season MAR is an outlier, which is significantly higher than the normal Sale of other Locations in the corresponding Sale.)
+], 'shape': [], 'compound': []}

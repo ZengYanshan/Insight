@@ -19,4 +19,9 @@ row data:
 14          Other    MAR    20
 15          Other    SEP     0
 insights:
-{'point': [(Type: dominance, Score: 0.5789473684210527, Category: point, Description: The Sale of North America dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5789473684210527
+Category: point
+Description: The Sale of North America dominates among all Locations.)
+], 'shape': [], 'compound': []}
