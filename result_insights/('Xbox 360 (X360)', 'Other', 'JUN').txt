@@ -11,4 +11,9 @@ row data:
 6  Microsoft  2019     0
 7  Microsoft  2020     0
 insights:
-{'point': [(Type: dominance, Score: 0.8571428571428571, Category: point, Description: The Sale of Microsoft dominates among all Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.8571428571428571
+Category: point
+Description: The Sale of Microsoft dominates among all Companys.)
+], 'shape': [], 'compound': []}

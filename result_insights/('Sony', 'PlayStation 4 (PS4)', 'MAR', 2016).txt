@@ -7,4 +7,9 @@ row data:
 2  North America  3620
 3          Other  1320
 insights:
-{'point': [(Type: top2, Score: 0.41043083900226757, Category: point, Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.41043083900226757
+Category: point
+Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.)
+], 'shape': [], 'compound': []}

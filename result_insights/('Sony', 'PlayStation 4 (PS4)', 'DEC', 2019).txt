@@ -7,4 +7,9 @@ row data:
 2  North America   880
 3          Other   610
 insights:
-{'point': [(Type: dominance, Score: 0.5266106442577031, Category: point, Description: The Sale of Europe dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5266106442577031
+Category: point
+Description: The Sale of Europe dominates among all Locations.)
+], 'shape': [], 'compound': []}

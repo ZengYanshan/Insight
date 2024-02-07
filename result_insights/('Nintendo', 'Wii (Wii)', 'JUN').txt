@@ -35,4 +35,9 @@ row data:
 30          Other  2019     0
 31          Other  2020     0
 insights:
-{'point': [(Type: dominance, Score: 0.6375, Category: point, Description: The Sale of Europe dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.6375
+Category: point
+Description: The Sale of Europe dominates among all Locations.)
+], 'shape': [], 'compound': []}

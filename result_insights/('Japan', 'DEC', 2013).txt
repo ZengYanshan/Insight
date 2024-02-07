@@ -13,4 +13,9 @@ row data:
 8  Microsoft         Xbox 360 (X360)     0
 9  Microsoft         Xbox One (XOne)     0
 insights:
-{'point': [(Type: dominance, Score: 0.7796610169491526, Category: point, Description: The Sale of Nintendo dominates among all Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.7796610169491526
+Category: point
+Description: The Sale of Nintendo dominates among all Companys.)
+], 'shape': [], 'compound': []}

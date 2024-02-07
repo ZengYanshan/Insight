@@ -35,4 +35,9 @@ row data:
 30    SEP  2019    80
 31    SEP  2020   350
 insights:
-{'point': [(Type: outlier, Score: 3.228213472382048, Category: point, Description: The Sale of Season MAR of Year 2015 is an outlier, which is significantly higher than the normal Sale of other Season in the corresponding Sale.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier
+Score: 3.228213472382048
+Category: point
+Description: The Sale of Season MAR of Year 2015 is an outlier, which is significantly higher than the normal Sale of other Seasons in the corresponding Sale.)
+], 'shape': [], 'compound': []}

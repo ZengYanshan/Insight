@@ -11,4 +11,9 @@ row data:
 6  2019   320
 7  2020    70
 insights:
-{'point': [(Type: outlier-temporal, Score: 2.0143977934450077, Category: point, Description: The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Year .)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier-temporal
+Score: 2.0143977934450077
+Category: point
+Description: The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.)
+], 'shape': [], 'compound': []}

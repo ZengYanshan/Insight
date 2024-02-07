@@ -13,4 +13,9 @@ row data:
 8  Microsoft         Xbox 360 (X360)     0
 9  Microsoft         Xbox One (XOne)     0
 insights:
-{'point': [(Type: top2, Score: 0.6614173228346457, Category: point, Description: The Sale proportion of Nintendo and Sony is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.6614173228346457
+Category: point
+Description: The Sale proportion of Nintendo and Sony is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

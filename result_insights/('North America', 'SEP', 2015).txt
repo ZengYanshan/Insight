@@ -13,4 +13,9 @@ row data:
 8  Microsoft         Xbox 360 (X360)    30
 9  Microsoft         Xbox One (XOne)   600
 insights:
-{'point': [(Type: top2, Score: 0.3956043956043956, Category: point, Description: The Sale proportion of Sony and Microsoft is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3956043956043956
+Category: point
+Description: The Sale proportion of Sony and Microsoft is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

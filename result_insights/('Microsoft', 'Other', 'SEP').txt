@@ -19,4 +19,9 @@ row data:
 14  Xbox One (XOne)  2019     0
 15  Xbox One (XOne)  2020    70
 insights:
-{'point': [(Type: dominance, Score: 0.5900621118012422, Category: point, Description: The Sale of Xbox 360 (X360) dominates among all Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5900621118012422
+Category: point
+Description: The Sale of Xbox 360 (X360) dominates among all Brands.)
+], 'shape': [], 'compound': []}

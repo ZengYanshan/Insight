@@ -7,4 +7,9 @@ row data:
 2    MAR     0
 3    SEP   490
 insights:
-{'point': [(Type: top2, Score: 0.417910447761194, Category: point, Description: The Sale proportion of JUN and DEC is significantly higher than that of other Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.417910447761194
+Category: point
+Description: The Sale proportion of JUN and DEC is significantly higher than that of other Seasons.)
+], 'shape': [], 'compound': []}

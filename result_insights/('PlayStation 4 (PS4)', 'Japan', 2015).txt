@@ -7,4 +7,9 @@ row data:
 2    Sony    MAR   290
 3    Sony    SEP   160
 insights:
-{'point': [(Type: top2, Score: 0.3103448275862069, Category: point, Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3103448275862069
+Category: point
+Description: The Sale proportion of Sony and Sony is significantly higher than that of other Companys.)
+], 'shape': [], 'compound': []}

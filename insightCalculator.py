@@ -175,18 +175,18 @@ def generate_outlier_description(data, index, outlier_type):
             column_name = data.columns[col_index]
             index_value = data.iloc[index, col_index].values[0]
             description += f"of {column_name} {index_value} "
-    print(description)
+    # print(description)
     description += "is an outlier, which is significantly "
     description += "lower " if outlier_type == 'lower' else "higher "
-    description += f"than the normal {value_name} of other {main_column_name} "
-    print(description)
+    description += f"than the normal {value_name} of other {main_column_name}s"
+    # print(description)
     if data.shape[1] > 2:
-        description += "in the corresponding "
+        description += " in the corresponding "
         for col_index in range(1, data.shape[1] - 2):
             column_name = data.columns[col_index]
-            description += f"{column_name}, "
-        column_name = data.columns[data.shape[1] - 1]
-        description += f"{column_name}"
+            description += f"{column_name}s, "
+        column_name = data.columns[data.shape[1] - 2]
+        description += f"{column_name}s"
     description += "."
 
     return description
@@ -324,6 +324,8 @@ def calc_distribution_insight(d):
     has_evenness = p_e > 0.01
 
     value_col_name = d.columns[-1]
+    # test
+    # has_kurtosis = True
     if has_skew and has_kurtosis:
         if p_s < p_k:
             ins_type, ins_score, description = set_skew(p_s, s, value_col_name)
@@ -342,7 +344,7 @@ def calc_distribution_insight(d):
             for col_index in range(1, d.shape[1] - 2):
                 column_name = d.columns[col_index]
                 description += f", {column_name}s"
-            column_name = d.columns[d.shape[1] - 1]
+            column_name = d.columns[d.shape[1] - 2]
             description += f" and {column_name}s"
         description += "."
     return ins_type, ins_score, description

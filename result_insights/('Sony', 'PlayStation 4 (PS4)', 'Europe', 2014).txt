@@ -7,4 +7,9 @@ row data:
 2    MAR  2180
 3    SEP   930
 insights:
-{'point': [(Type: top2, Score: 0.3925686591276252, Category: point, Description: The Sale proportion of DEC and MAR is significantly higher than that of other Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.3925686591276252
+Category: point
+Description: The Sale proportion of DEC and MAR is significantly higher than that of other Seasons.)
+], 'shape': [], 'compound': []}

@@ -7,4 +7,9 @@ row data:
 2    MAR   110
 3    SEP   350
 insights:
-{'point': [(Type: dominance, Score: 0.5645161290322581, Category: point, Description: The Sale of SEP dominates among all Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.5645161290322581
+Category: point
+Description: The Sale of SEP dominates among all Seasons.)
+], 'shape': [], 'compound': []}

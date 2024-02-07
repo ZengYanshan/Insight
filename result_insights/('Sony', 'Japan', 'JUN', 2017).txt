@@ -6,4 +6,9 @@ row data:
 1     PlayStation 4 (PS4)   350
 2  PlayStation Vita (PSV)    90
 insights:
-{'point': [(Type: dominance, Score: 0.7777777777777778, Category: point, Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.7777777777777778
+Category: point
+Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.)
+], 'shape': [], 'compound': []}

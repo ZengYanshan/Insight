@@ -7,4 +7,9 @@ row data:
 2  North America   120
 3          Other   360
 insights:
-{'point': [(Type: dominance, Score: 0.6428571428571429, Category: point, Description: The Sale of Other dominates among all Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.6428571428571429
+Category: point
+Description: The Sale of Other dominates among all Locations.)
+], 'shape': [], 'compound': []}

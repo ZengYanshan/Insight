@@ -35,4 +35,9 @@ row data:
 30          Other  2019     0
 31          Other  2020     0
 insights:
-{'point': [(Type: top2, Score: 0.43243243243243246, Category: point, Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: top2
+Score: 0.43243243243243246
+Category: point
+Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.)
+], 'shape': [], 'compound': []}

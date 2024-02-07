@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 import heapq
 import copy
-from insightCalculator import check_is_temporal, calc_outlier, calc_outlier_temporal, calc_point_insight, calc_shape_insight, calc_compound_insight, calc_distribution_insight
+from insightCalculator import check_is_temporal, calc_outlier, calc_outlier_temporal, calc_point_insight, \
+    calc_shape_insight, calc_compound_insight, calc_distribution_insight
 
 month2letter = {'JAN': 'a', 'FEB': 'b', 'MAR': 'c', 'APR': 'd', 'MAY': 'e',
                 'JUN': 'f', 'JUL': 'g', 'AUG': 'h', 'SEP': 'i', 'OCT': 'j', 'NOV': 'k', 'DEC': 'l'}
@@ -25,13 +26,13 @@ class Insight:
         return self.score < other.score
 
     def __str__(self) -> str:
-        return f"(Type: {self.type}, Score: {self.score}, Category: {self.category}, Description: {self.description})"
+        return f"\n(Type: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description})\n"
 
     def __repr__(self):
-        return f"(Type: {self.type}, Score: {self.score}, Category: {self.category}, Description: {self.description})"
+        return f"\n(Type: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description})\n"
 
 
-def get_insight(header, block_data):
+def get_insight(header, block_data, aggregated_data):
     aggregate = 'sum'
     global block_insight  # record the insights for the current block
     # contains three types of insight
@@ -46,12 +47,12 @@ def get_insight(header, block_data):
     get_scope_no_breakdown(block_data)
 
     # only consider the first layer of headers as breakdown and aggregate
-    # get_scope_with_aggregate(block_data, 0, aggregate)  # index header
+    aggregated_data = get_scope_with_aggregate(block_data, 0, aggregate)  # index header
 
     # consider all layers and generate groups, no aggregate, compound insights
     # get_scope_rearrange(header, block_data)
 
-    return block_insight
+    return block_insight, aggregated_data
 
 
 def merge_columns(block_data, start, end, name='Merged'):
@@ -60,7 +61,7 @@ def merge_columns(block_data, start, end, name='Merged'):
         lambda x: ' - '.join(x.astype(str)), axis=1)
     merged_col.name = name
     res = pd.concat([data.iloc[:, :start], merged_col,
-                    data.iloc[:, end:]], axis=1)
+                     data.iloc[:, end:]], axis=1)
 
     return res
 
@@ -84,8 +85,29 @@ def get_scope_no_breakdown(block_data):
 def get_scope_with_aggregate(block_data, breakdown, aggregate):
     scope_data = block_data.groupby(
         block_data.columns[breakdown]).agg(aggregate)
+    scope_data = scope_data.reset_index()
+
+    columns_to_update = scope_data.columns[1:-1]
+
+    def replace_value(cell_value, column_name):
+        return 'all ' + column_name + 's'
+    for column in columns_to_update:
+        scope_data[column] = scope_data[column].apply(lambda x: replace_value(x, column))
+    # def replace_value(cell):
+    #     # rename the aggregated cell
+    #     if pd.notna(cell) and (
+    #             not pd.api.types.is_numeric_dtype(cell) or scope_data.columns[columns_to_update.get_loc(cell.name)] == 'Year'):
+    #         return 'all'
+    #     else:
+    #         return cell
+    # scope_data[columns_to_update] = scope_data[columns_to_update].applymap(replace_value)
+
     # remove other columns except the aggregate column
-    scope_data = scope_data.iloc[:, -1].apply(lambda x: round(x, 2))
+    # scope_data = scope_data.iloc[:, -1].apply(lambda x: round(x, 2))
+
+    numeric_columns = scope_data.select_dtypes(include='number').columns
+    scope_data[numeric_columns] = scope_data[numeric_columns].apply(lambda x: round(x, 2))
+
     if scope_data.index.__contains__('MAR'):  # trick to sort months
         # record the origin order
         scope_data.index = scope_data.index.to_series().replace(month2letter, regex=True)
@@ -96,13 +118,15 @@ def get_scope_with_aggregate(block_data, breakdown, aggregate):
 
     calc_insight(scope_data, breakdown, aggregate)
 
+    return scope_data
+
 
 def get_scope_rearrange_old(header, block_data, header_split):
     scope_data = copy.deepcopy(block_data)
     # concat row and column headers to one level if needed
-    if block_data.shape[1]-1 - header_split > 1:
+    if block_data.shape[1] - 1 - header_split > 1:
         scope_data = merge_columns(
-            scope_data, header_split, block_data.shape[1]-1, 'Merged_col')
+            scope_data, header_split, block_data.shape[1] - 1, 'Merged_col')
     if header_split > 1:
         scope_data = merge_columns(scope_data, 0, header_split, 'Merged_idx')
 
@@ -142,9 +166,9 @@ def get_scope_rearrange_advanced(origin_data, header_name, idx_num, col_num):
     grouped_data_processed = []
     for g_data in grouped_data:
         print(g_data)
-        if g_data.shape[1]-1 > 1:    # many col headers, concat them
+        if g_data.shape[1] - 1 > 1:  # many col headers, concat them
             g_data = merge_columns(g_data, 0,
-                                   origin_data.shape[1]-1, 'Merged_col')
+                                   origin_data.shape[1] - 1, 'Merged_col')
         print(g_data)
         g_data = g_data.pivot(
             index=g_data.columns[idx_num],
@@ -162,11 +186,11 @@ def get_scope_rearrange_advanced(origin_data, header_name, idx_num, col_num):
     tmp_corr_list = []
     tmp_scope_list = []
     tmp_score = float('inf')
-    for i in range(len(grouped_data_processed)-1):
+    for i in range(len(grouped_data_processed) - 1):
         for k in range(len(grouped_data_processed[i].columns)):
             tmp_corr_vars = [(i, k)]
             scope_data = grouped_data_processed[i].iloc[:, k]
-            for j in range(i+1, len(grouped_data_processed)):
+            for j in range(i + 1, len(grouped_data_processed)):
                 for l in range(len(grouped_data_processed[j].columns)):
                     scope_data_subset = pd.concat(
                         [grouped_data_processed[i].iloc[:, k], grouped_data_processed[j].iloc[:, l]], axis=1)
@@ -178,7 +202,7 @@ def get_scope_rearrange_advanced(origin_data, header_name, idx_num, col_num):
                         tmp_score = min(tmp_score, ins_score)
                         scope_data = pd.concat(
                             [scope_data, grouped_data_processed[j].iloc[:, l]], axis=1)
-                    elif ins_type == 'correlation':    # no merge, directly save the insight
+                    elif ins_type == 'correlation':  # no merge, directly save the insight
                         save_insight(scope_data_subset,
                                      'compound', ins_type, ins_score)
             if len(tmp_corr_vars) > 1:
@@ -213,7 +237,7 @@ def save_insight(scope_data, ins_category, ins_type, ins_score, ins_description,
 
 def get_scope_rearrange_more(d):
     for i in range(len(d.columns)):
-        for j in range(i+1, len(d.columns)):
+        for j in range(i + 1, len(d.columns)):
             scope_data = pd.concat([d.iloc[:, i], d.iloc[:, j]], axis=1)
             calc_insight(scope_data, None, 'compound')
 

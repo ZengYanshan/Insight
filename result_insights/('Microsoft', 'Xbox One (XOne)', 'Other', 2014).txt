@@ -7,4 +7,9 @@ row data:
 2    MAR   220
 3    SEP    60
 insights:
-{'point': [(Type: dominance, Score: 0.6326530612244898, Category: point, Description: The Sale of DEC dominates among all Seasons.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.6326530612244898
+Category: point
+Description: The Sale of DEC dominates among all Seasons.)
+], 'shape': [], 'compound': []}

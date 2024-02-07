@@ -19,4 +19,9 @@ row data:
 14  Nintendo          Other    MAR   430
 15  Nintendo          Other    SEP   300
 insights:
-{'point': [(Type: outlier, Score: 2.930265254829344, Category: point, Description: The Sale of Company Nintendo of Location Europe of Season MAR is an outlier, which is significantly higher than the normal Sale of other Company in the corresponding Location, Sale.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: outlier
+Score: 2.930265254829344
+Category: point
+Description: The Sale of Company Nintendo of Location Europe of Season MAR is an outlier, which is significantly higher than the normal Sale of other Companys in the corresponding Location, Sale.)
+], 'shape': [], 'compound': []}

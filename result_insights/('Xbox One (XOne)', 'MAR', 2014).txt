@@ -7,4 +7,9 @@ row data:
 2  Microsoft  North America  2430
 3  Microsoft          Other   220
 insights:
-{'point': [(Type: dominance, Score: 0.6864406779661016, Category: point, Description: The Sale of Microsoft dominates among all Companys.)], 'shape': [], 'compound': []}
+{'point': [
+(Type: dominance
+Score: 0.6864406779661016
+Category: point
+Description: The Sale of Microsoft dominates among all Companys.)
+], 'shape': [], 'compound': []}
