@@ -77,8 +77,10 @@ class HierarchicalTable:
 
         # get raw data through header
         block_data = self.get_block_data(header)
+
+        aggregated_header = ""
         aggregated_data = None
-        insight_list, aggregated_data = get_insight(header, block_data, aggregated_data)
+        aggregated_header, insight_list, aggregated_data = get_insight(header, block_data, aggregated_data)
         # self.block_insight[header] = insight_list   # save the insight of the block
         # vis_list = get_visualization(insight_list)
         # self.block_vis[header] = vis_list   # save the visulization of the block
@@ -88,15 +90,21 @@ class HierarchicalTable:
             # node = get_node(header, vis_list)
             print("header:\n", header)
             print('row data:\n', block_data)
+            print("------------------\n")
+            print('aggregated header:\n', aggregated_header)
             print('aggregated data:\n', aggregated_data)
+            print("------------------\n")
             print('insights:\n', insight_list)
-            print("---------------------------------")
+            print("---------------------------------------------------")
 
             file_name = os.path.join('all_result_insights', str(header) + '.txt')
             with open(file_name, 'w') as file:
                 file.write("header:\n" + str(header) + "\n")
                 file.write('row data:\n' + str(block_data) + "\n")
+                file.write('------------------')
+                file.write('aggregated header:\n' + str(aggregated_header) + "\n")
                 file.write('aggregated data:\n' + str(aggregated_data) + "\n")
+                file.write('------------------')
                 file.write('insights:\n' + str(insight_list) + "\n")
 
         # print('node complete!')
