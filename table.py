@@ -90,10 +90,10 @@ class HierarchicalTable:
             # node = get_node(header, vis_list)
             print("header:\n", header)
             print('row data:\n', block_data)
-            print("------------------")
+            print("------------------\n")
             print('aggregated header:\n', aggregated_header)
             print('aggregated data:\n', aggregated_data)
-            print("------------------")
+            print("------------------\n")
             print('insights:\n', insight_list)
             print("---------------------------------------------------")
 
