@@ -99,20 +99,21 @@ def get_scope_no_breakdown(header, block_data):
 
 
 def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
+    # check if main column has only one entity
+    abstract_header = ""
+    if len(set(block_data.iloc[:, 0])) == 1 and len(block_data.columns) > 2:
+        while len(set(block_data.iloc[:, 0])) == 1 and len(block_data.columns) > 2:
+            abstract_header += block_data.iloc[0, 0] + ","
+            block_data = block_data.drop(columns=block_data.columns[0])
+        abstract_header = abstract_header[:-1]
+        abstract_header_tuple = (abstract_header,)
+        aggregated_header = header + abstract_header_tuple
+    else:
+        aggregated_header = header
+
     scope_data = block_data.groupby(
         block_data.columns[breakdown]).agg(aggregate)
     scope_data = scope_data.reset_index()
-
-    # check if main column has only one entity
-    abstract_header = ""
-    while len(set(scope_data.iloc[:, 0])) == 1 and len(scope_data.columns) > 2:
-        abstract_header += scope_data.columns[0] + ","
-        scope_data = scope_data.drop(columns=scope_data.columns[0])
-
-    abstract_header = abstract_header[:-1]
-    abstract_header_tuple = (abstract_header,)
-    # TODO add header
-    aggregated_header = header + abstract_header_tuple
 
     # -----process duplicated content in cell-----
     columns_to_update = scope_data.columns[1:-1]
