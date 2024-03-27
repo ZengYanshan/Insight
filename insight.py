@@ -20,6 +20,7 @@ table_structure = {
     'Year': ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
 }
 
+subspace_insight = {}
 
 class Insight:
     def __init__(self, scope_data, breakdown=None, aggregate=None):
@@ -30,7 +31,7 @@ class Insight:
         self.type = None
         self.score = None
         self.category = None
-        self.table_structure = table_structure
+        # self.table_structure = table_structure
         self.context = None  # header description, which is the filter condition of subspace
         self.description = None
 
@@ -38,19 +39,16 @@ class Insight:
         return self.score < other.score
 
     def __str__(self) -> str:
-        return f"\n(Table structure: {self.table_structure}\nContext: {self.context}\n" \
-               f"In the filtered subspace, the insight is: " \
-               f"\nType: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description})\n"
+        return f"\nType: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description}\n"
 
     def __repr__(self):
-        return f"\n(Table structure: {self.table_structure}\nContext: {self.context}\n" \
-               f"In the filtered subspace, the insight is: " \
-               f"\nType: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description})\n"
+        return f"\nType: {self.type}\nScore: {self.score}\nCategory: {self.category}\nDescription: {self.description}\n"
 
 
-def get_insight(header, block_data, aggregated_data):
+def get_insight(header, block_data):
     aggregate = 'sum'
-    global block_insight  # record the insights for the current block
+    global block_insight  # record the insights for the current block # group by insight type
+    global subspace_insight
     # contains three types of insight
     block_insight = {'point': [], 'shape': [], 'compound': []}
 
@@ -62,13 +60,15 @@ def get_insight(header, block_data, aggregated_data):
     # no breakdown, consider all data together
     get_scope_no_breakdown(header, block_data)
 
-    # only consider the first layer of headers as breakdown and aggregate
-    abstract_header, aggregated_header, aggregated_data = get_scope_with_aggregate(header, block_data, 0,
-                                                                                   aggregate)  # index header
+    # aggregate by every column
+    for i in range(len(block_data.columns) - 1):
+        get_scope_with_aggregate(header, block_data, i, aggregate)  # i is the breakdown index
+
+    get_scope_for_compound(header, block_data)
     # consider all layers and generate groups, no aggregate, compound insights
     # get_scope_rearrange(header, block_data)
 
-    return aggregated_header, block_insight, aggregated_data
+    return block_insight, subspace_insight
 
 
 def merge_columns(block_data, start, end, name='Merged'):
@@ -83,37 +83,67 @@ def merge_columns(block_data, start, end, name='Merged'):
 
 
 def get_scope_no_breakdown(header, block_data):
-    scope_data = None
-    # merge the first [merge_num] columns as the breakdown column
-    merge_num = block_data.shape[1] - 1
-    scope_data = merge_columns(block_data, 0, merge_num)
-    # merged_column = block_data.iloc[:, :merge_num].apply(lambda x: ' - '.join(x.astype(str)), axis=1)
-    # scope_data = pd.concat([merged_column, block_data.iloc[:, merge_num]], axis=1)
+    # scope_data = None
+    # # merge the first [merge_num] columns as the breakdown column
+    # merge_num = block_data.shape[1] - 1
+    # scope_data = merge_columns(block_data, 0, merge_num)
+    # # merged_column = block_data.iloc[:, :merge_num].apply(lambda x: ' - '.join(x.astype(str)), axis=1)
+    # # scope_data = pd.concat([merged_column, block_data.iloc[:, merge_num]], axis=1)
+    #
+    # # set the breakdown column as index
+    # scope_data = scope_data.set_index(scope_data.columns[0])
+    # # turn the dataframe to series
+    # scope_data = scope_data[scope_data.columns[0]]
 
-    # set the breakdown column as index
-    scope_data = scope_data.set_index(scope_data.columns[0])
-    # turn the dataframe to series
-    scope_data = scope_data[scope_data.columns[0]]
-    # calc_insight(scope_data, None, None, True)
-    calc_insight(header, block_data, None, None, True)
-
-
-def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
+    scope_data = copy.deepcopy(block_data)
     # check if main column has only one entity
     abstract_header = ""
-    if len(set(block_data.iloc[:, 0])) == 1 and len(block_data.columns) > 2:
-        while len(set(block_data.iloc[:, 0])) == 1 and len(block_data.columns) > 2:
-            abstract_header += block_data.iloc[0, 0] + ","
-            block_data = block_data.drop(columns=block_data.columns[0])
+    if len(set(scope_data.iloc[:, 0])) == 1 and len(scope_data.columns) > 2:
+        while len(set(scope_data.iloc[:, 0])) == 1 and len(scope_data.columns) > 2:
+            abstract_header += scope_data.iloc[0, 0] + ","
+            scope_data = scope_data.drop(columns=scope_data.columns[0])
         abstract_header = abstract_header[:-1]
         abstract_header_tuple = (abstract_header,)
         aggregated_header = header + abstract_header_tuple
     else:
         aggregated_header = header
 
-    scope_data = block_data.groupby(
-        block_data.columns[breakdown]).agg(aggregate)
-    scope_data = scope_data.reset_index()
+    is_month = False
+    if (scope_data.iloc[:, 0] == 'MAR').any(): # Check if 'MAR' is in the first column
+        # record the origin order
+        scope_data.iloc[:, 0] = scope_data.iloc[:, 0].replace(month2letter, regex=True)
+        # sort the data by origin order
+        scope_data = scope_data.sort_values(by=scope_data.columns[0])
+        # change back to the origin name
+        scope_data.iloc[:, 0] = scope_data.iloc[:, 0].replace(letter2month, regex=True)
+        is_month = True
+
+    scope_data = scope_data.reset_index(drop=True)
+
+    numeric_columns = scope_data.select_dtypes(include='number').columns
+    scope_data[numeric_columns] = scope_data[numeric_columns].apply(lambda x: round(x, 2))
+
+    calc_insight(aggregated_header, scope_data, None, None, True, is_month=is_month)
+
+
+def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
+    scope_data = copy.deepcopy(block_data)
+
+    # make the breakdown_column be the main col
+    breakdown_col = scope_data.columns[breakdown]
+    scope_data.insert(0, breakdown_col, scope_data.pop(breakdown_col))
+
+    # check if main column has only one entity
+    abstract_header = ""
+    if len(set(scope_data.iloc[:, 0])) == 1 and len(scope_data.columns) > 2:
+        while len(set(scope_data.iloc[:, 0])) == 1 and len(scope_data.columns) > 2:
+            abstract_header += scope_data.iloc[0, 0] + ","
+            scope_data = scope_data.drop(columns=scope_data.columns[0])
+        abstract_header = abstract_header[:-1]
+        abstract_header_tuple = (abstract_header,)
+        aggregated_header = header + abstract_header_tuple
+    else:
+        aggregated_header = header
 
     # -----process duplicated content in cell-----
     columns_to_update = scope_data.columns[1:-1]
@@ -128,9 +158,10 @@ def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
     # scope_data = scope_data.applymap(lambda x: ', '.join(sorted(set(x.split(',')))) if isinstance(x, str) else x)
     # print(scope_data)
 
-    numeric_columns = scope_data.select_dtypes(include='number').columns
-    scope_data[numeric_columns] = scope_data[numeric_columns].apply(lambda x: round(x, 2))
+    # merge the main col
+    scope_data = scope_data.groupby(scope_data.columns[0]).agg('sum')
 
+    is_month = False
     if scope_data.index.__contains__('MAR'):  # trick to sort months
         # record the origin order
         scope_data.index = scope_data.index.to_series().replace(month2letter, regex=True)
@@ -138,10 +169,25 @@ def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
         scope_data = scope_data.sort_index()
         # change back to the origin name
         scope_data.index = scope_data.index.to_series().replace(letter2month, regex=True)
+        is_month = True
 
-    calc_insight(aggregated_header, scope_data, breakdown, aggregate)
+    scope_data = scope_data.reset_index()
 
-    return abstract_header, aggregated_header, scope_data
+    numeric_columns = scope_data.select_dtypes(include='number').columns
+    scope_data[numeric_columns] = scope_data[numeric_columns].apply(lambda x: round(x, 2))
+
+    calc_insight(aggregated_header, scope_data, breakdown, aggregate, is_month=is_month)
+
+
+def get_scope_for_compound(header, block_data):
+    """
+    枚举列表头中所有能作为x轴，z轴的表头对（x，z）
+    对每一个表头对（x，z），把x和z对应的data从header的date中提取出来
+    计算任意两组z属性（zi，zj）间的相关性
+    如果具有相关性（score > 0.7），就把（x，（zi，zj））加入到该header的compound insight里
+
+    """
+    pass
 
 
 def get_scope_rearrange_old(header, block_data, header_split):
@@ -217,7 +263,7 @@ def get_scope_rearrange_advanced(origin_data, header_name, idx_num, col_num):
                 for l in range(len(grouped_data_processed[j].columns)):
                     scope_data_subset = pd.concat(
                         [grouped_data_processed[i].iloc[:, k], grouped_data_processed[j].iloc[:, l]], axis=1)
-                    ins_type, ins_score = calc_compound_insight(
+                    ins_type, ins_score, ins_description = calc_compound_insight(
                         scope_data_subset)
 
                     if ins_type == 'correlation-temporal':  # only merge when temporal data
@@ -238,14 +284,35 @@ def get_scope_rearrange_advanced(origin_data, header_name, idx_num, col_num):
         save_insight(scope_data, 'compound', 'correlation-temporal', tmp_score)
 
 
-def save_insight(scope_data, ins_category, ins_type, ins_score, header_description, ins_description, breakdown=None,
+def insight_exists(header, insight):
+    global subspace_insight
+    for existing_insight in subspace_insight[header]:
+        if existing_insight.type == insight.type \
+           and existing_insight.scope_data.equals(insight.scope_data) \
+           and existing_insight.score == insight.score \
+           and existing_insight.category == insight.category \
+           and existing_insight.description == insight.description:
+            return True
+    return False
+
+
+def save_insight(header, scope_data, ins_category, ins_type, ins_score, header_description, ins_description, breakdown=None,
                  aggregate=None):
+    global subspace_insight
+
+    # avoid duplicate headers caused by different orders
+    sorted_header = tuple(sorted(map(str, header)))
     insight = Insight(scope_data, breakdown, aggregate)
     insight.type = ins_type
     insight.score = ins_score
     insight.category = ins_category
     insight.context = header_description
     insight.description = ins_description
+
+    if sorted_header not in subspace_insight:
+        subspace_insight[sorted_header] = []
+    if not insight_exists(sorted_header, insight):
+        subspace_insight[sorted_header].append(insight)
 
     # # keep the top1 insight for each category
     # if block_insight[ins_category] is None:
@@ -254,7 +321,8 @@ def save_insight(scope_data, ins_category, ins_type, ins_score, header_descripti
     #     block_insight[ins_category] = insight
 
     # keep_top_k(ins_category, insight, 3)
-    block_insight[ins_category].append(insight)
+
+
     # sort the insight list
     # if len(block_insight[ins_category]) > 1:
     #     block_insight[ins_category].sort(key=lambda x: x.score, reverse=True)
@@ -267,7 +335,7 @@ def get_scope_rearrange_more(d):
             calc_insight(scope_data, None, 'compound')
 
 
-def calc_insight(header, scope_data, breakdown, aggregate, no_aggreate=False):
+def calc_insight(header, scope_data, breakdown, aggregate, no_aggreate=False, is_month=False):
     ins_type = ''
     ins_score = 0
     header_description = "Filtered the original data table with the conditions: "
@@ -275,30 +343,51 @@ def calc_insight(header, scope_data, breakdown, aggregate, no_aggreate=False):
 
     # ins_des = "The insight of the filtered subspace is: \n"
 
-    if check_is_temporal(scope_data):
+    if check_is_temporal(scope_data, is_month):
+        # shape only temporal
         ins_type, ins_score, ins_description = calc_shape_insight(scope_data)
         if ins_score > 0:
-            save_insight(scope_data, 'shape', ins_type,
-                         ins_score, header_description, ins_description, breakdown, aggregate)
-        ins_type, ins_score, ins_description = calc_outlier_temporal(scope_data)
-        if ins_score > 0:
-            save_insight(scope_data, 'point', ins_type,
-                         ins_score, header_description, ins_description, breakdown, aggregate)
-    else:
-        ins_type, ins_score, ins_description = calc_point_insight(scope_data, no_aggreate)
-        if ins_score > 0:
-            save_insight(scope_data, 'point', ins_type,
-                         ins_score, header_description, ins_description, breakdown, aggregate)
-        ins_type, ins_score, ins_description = calc_outlier(scope_data)
-        if ins_score > 0:
-            save_insight(scope_data, 'point', ins_type,
+            save_insight(header, scope_data, 'shape', ins_type,
                          ins_score, header_description, ins_description, breakdown, aggregate)
 
+        # outlier_temporal
+        insights = calc_outlier_temporal(scope_data)
+        for insight in insights:
+            save_insight(header, scope_data, 'point', insight['ins_type'],
+                         insight['ins_score'], header_description, insight['ins_description'], breakdown, aggregate)
+
+        # point
+        ins_type, ins_score, ins_description = calc_point_insight(scope_data, no_aggreate)
+        if ins_score > 0:
+            save_insight(header, scope_data, 'point', ins_type,
+                         ins_score, header_description, ins_description, breakdown, aggregate)
+
+        # distribution
         # remove all zeros when calculating distribution insight
-        scope_data = scope_data[scope_data != 0]
+        # scope_data = scope_data[scope_data != 0]
         ins_type, ins_score, ins_description = calc_distribution_insight(scope_data)
         if ins_score > 0:
-            save_insight(scope_data, 'shape', ins_type,
+            save_insight(header, scope_data, 'shape', ins_type,
+                         ins_score, header_description, ins_description, breakdown, aggregate)
+    else:
+        # point
+        ins_type, ins_score, ins_description = calc_point_insight(scope_data, no_aggreate)
+        if ins_score > 0:
+            save_insight(header, scope_data, 'point', ins_type,
+                         ins_score, header_description, ins_description, breakdown, aggregate)
+
+        # outlier
+        insights = calc_outlier(scope_data)
+        for insight in insights:
+            save_insight(header, scope_data, 'point', insight['ins_type'],
+                         insight['ins_score'], header_description, insight['ins_description'], breakdown, aggregate)
+
+        # distribution
+        # remove all zeros when calculating distribution insight
+        # scope_data = scope_data[scope_data != 0]
+        ins_type, ins_score, ins_description = calc_distribution_insight(scope_data)
+        if ins_score > 0:
+            save_insight(header, scope_data, 'shape', ins_type,
                          ins_score, header_description, ins_description, breakdown, aggregate)
 
 
