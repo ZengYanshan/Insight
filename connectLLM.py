@@ -4,8 +4,8 @@ import os
 import config_api
 
 proxy = {
-'http': 'http://localhost:7890',
-'https': 'http://localhost:7890'
+    'http': 'http://localhost:7890',
+    'https': 'http://localhost:7890'
 }
 
 openai.proxy = proxy
@@ -33,7 +33,6 @@ Table structure: {} # The structure of the original data table, including column
 "
 """
 
-
 subspaces = [
     "('Nintendo', 'Europe', 'DEC', 2017)",
     "('Nintendo', 'Europe', 'JUN', 2013)",
@@ -48,7 +47,6 @@ subspaces = [
     "('Europe', 'DEC', 2013)"
 ]
 
-
 question2_prompt = """
 Table structure: {
 'Company': ['Nintendo', 'Sony', 'Microsoft'], 
@@ -57,38 +55,60 @@ Table structure: {
 'Season': ['DEC', 'JUN', 'MAR', 'SEP'], 
 'Year': ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']}
 
-Do you understand the questions I want to explore and the current exploration status? Next, I will provide you with some other subspaces related to the current exploration. Based on my question, analyze the information presented in the following subspaces. Choose three subspaces that are most relevant to the question as the next exploration directions.
+
+Do you understand the questions I want to explore and the current exploration status? Next, I will provide you with 
+some other subspaces related to the current exploration. Based on my question, analyze the information presented in 
+the following subspaces. Choose three subspaces that are most relevant to the question as the next exploration 
+directions. 
+
 """
 
-question3_prompt = """
-Based on the question and current subspace, I need you to suggest five possible next steps for exploration and explain the reasons for each. Predict the information that may be explored.
-You need to reply to me in the following form
-subspace: ""
-reason: ""
+question3_prompt = """Your task is to predict the information that might be explored. Specifically, based on the 
+question I want to explore and the current subspace of exploration, I need you to find the header I need from the 
+"Related Headers List". The headers you select must be relevant to the query that I want to explore and should guide 
+me in further exploration. Please list the selected headers, for each explain why you chose it, and give me a query 
+to continue exploring in that header. 
+Please note that you should list all headers that you think might solve the query, without omission.
+Your answer must follow the format below: 
+Subspace1: "" 
+Reason: "" 
+Query: "" 
+
+Subspace2: ""
+Reason: ""
+Query: ""
+...
 """
+global insight_list
+global header_dict
+
 
 def read_vis_list(file_path):
+    global insight_list
     insight_list = []
-    with open(file_path, 'r') as file:
-        header = None
-        insight = {}
-        for line in file:
-            line = line.strip()
+
+    with open('vis_list.txt', 'r') as file:
+        lines = file.readlines()
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
             if line.startswith("Header:"):
-                if header is not None:
-                    insight_list.append({'header': header, 'insights': insight})
-                header = tuple(line.split(": ")[1].strip("()").split(", "))
-                insight = {}
-            elif line.startswith("Insight"):
-                insight_type = line.split(": ")[1]
-            elif line.startswith("Type:"):
-                insight['type'] = line.split(": ")[1]
-            elif line.startswith("Score:"):
-                insight['score'] = float(line.split(": ")[1])
-            elif line.startswith("Description:"):
-                insight['description'] = line.split(": ")[1]
-        if header is not None:
-            insight_list.append({'header': header, 'insights': insight})
+                header = eval(line.split(":")[1].strip())
+                insights = []
+                i += 1
+                while i < len(lines) and not lines[i].startswith("Header:"):
+                    if lines[i].startswith("Insight"):
+                        insight_type = lines[i + 1].split(":")[1].strip()
+                        insight_score = float(lines[i + 2].split(":")[1].strip())
+                        insight_description = lines[i + 3].split(":")[1].strip()
+                        insights.append(
+                            {"Type": insight_type, "Score": insight_score, "Description": insight_description})
+                        i += 4
+                    else:
+                        i += 1
+                insight_list.append({"Header": header, "Insights": insights})
+            else:
+                i += 1
     return insight_list
 
 
@@ -106,16 +126,19 @@ def get_completion_from_messages(messages, temperature=0):
     return response.choices[0].message["content"]
 
 
-def get_insights_for_header(header, insight_list):
+def get_insights_for_header(header_str, insight_list):
+    header = eval(header_str)
+    # sort for matching
+    header = tuple(sorted(map(str, header)))
     for item in insight_list:
-        if item['header'] == header:
+        if item['Header'] == header:
             insights_info = []
-            for i, insight in enumerate(item['insights'].values(), start=1):
+            for i, insight in enumerate(item['Insights'], start=1):
                 insight_info = {
                     'Insight': f"Insight {i}",
-                    'Type': insight['type'],
-                    'Score': insight['score'],
-                    'Description': insight['description']
+                    'Type': insight['Type'],
+                    'Score': insight['Score'],
+                    'Description': insight['Description']
                 }
                 insights_info.append(insight_info)
             return insights_info
@@ -125,7 +148,7 @@ def get_insights_for_header(header, insight_list):
 def combine_question2(query, crt_header):
     insights_info = get_insights_for_header(crt_header, insight_list)
     if insights_info:
-        question2 = "Queation: " + query + "\n"
+        question2 = "Question: " + query + "\n"
         question2 += "Current Subspace: " + str(crt_header) + "\n"
         for info in insights_info:
             question2 += info['Insight'] + ":\n"
@@ -139,7 +162,9 @@ def combine_question2(query, crt_header):
     return question2
 
 
-def get_related_subspace(input_header, header_dict):
+def get_related_subspace(input_header_str, header_dict):
+    # transform to tuple
+    input_header = ast.literal_eval(input_header_str)
     same_level_headers = []
     elaboration_headers = []
     generalization_headers = []
@@ -160,17 +185,10 @@ def combine_question3(crt_header, insight_list):
     related_headers_list = get_related_subspace(crt_header, header_dict)
     question3 = "Related Headers List:\n"
     for i, headers in enumerate(related_headers_list, start=1):
-        # if i == 1:
-        #     question3 += "Same Level Headers:\n"
-        # elif i == 2:
-        #     question3 += "Elaboration Headers:\n"
-        # elif i == 3:
-        #     question3 += "Generalization Headers:\n"
         for header in headers:
             question3 += str(header) + "\n"
+    question3 += question3_prompt
     return question3
-
-
 
 
 def get_response(question):
@@ -187,43 +205,62 @@ def parse_response(response):
     subspace_reason_info = {}
     for line in response.split("\n"):
         line = line.strip()
-        if line.startswith("subspace:"):
+        if line.startswith("Subspace"):
             if subspace_reason_info:
                 response_list.append(subspace_reason_info)
-            subspace_reason_info = {"subspace": line.split(":")[1].strip()}
-        elif line.startswith("reason:"):
-            subspace_reason_info["reason"] = line.split(":")[1].strip()
+            subspace_reason_info = {"subspace": line.split(":")[1].strip().strip('"')}
+        elif line.startswith("Reason"):
+            subspace_reason_info["reason"] = line.split(":")[1].strip().strip('"')
+        elif line.startswith("Query"):
+            subspace_reason_info["query"] = line.split(":")[1].strip().strip('"')
     if subspace_reason_info:
         response_list.append(subspace_reason_info)
     return response_list
 
 
 def qa_process():
-    signal_received = False
-    iteration = 0
-
-    query = "I want to know the sales information of Nintendo 3DS in different years."
+    file_path = 'qa_log_make_LLM_choose_all_related_headers.txt'
+    query = "I need to analyze sales data related to the Nintendo 3DS over time to gain insights specifically focused on trends and patterns associated with different time periods."
     crt_header = "('Nintendo', 'Nintendo 3DS (3DS)')"
 
-    with open('qa_log.txt', 'w') as f:
+    with open(file_path, 'w') as f:
         response = get_response(question1)
+        f.write('=' * 100)
+        f.write("\n")
         f.write(f"Q: {question1}\nA: {response}\n")
 
-        # while not signal_received:
-        for _ in range(2):
-            iteration += 1
-            question2 = combine_question2(query, crt_header)
-            question3 = combine_question3(crt_header, insight_list)
-            response = get_response(question2 + question3)
+    iteration = 0
+    while iteration < 3:
+        iteration += 1
+        question2 = combine_question2(query, crt_header)
+        question3 = combine_question3(crt_header, insight_list)
+        response = get_response(question2 + question3)
+
+        with open(file_path, 'a') as f:
+            f.write('=' * 100)
+            f.write("\n")
             f.write(f"Q: {question2 + question3}\nA: {response}\n")
+        print(f"Conversation {iteration} ended.")
 
-            # abstract structured info from response
-            response_list = parse_response(response)
+        # parse structured info from response
+        response_list = parse_response(response)
 
-            # if check_for_signal():
-            #     signal_received = True
+        # choose the 1st answer as default to start next qa process
+        next_header = None
+        next_query = None
+        for i in range(len(response_list)):
+            next_header = response_list[i].get("subspace")
+            next_query = response_list[i].get("query")
+            if combine_question2(next_query, next_header) != "Invalid Current Subspace.":
+                break
 
-    print("Conversation ended.")
+        crt_header = next_header
+        query = next_query
+        if crt_header is None or query is None:
+            print("No valid question found. Ending conversation.")
+            break
+
+    print("Conversation closed.")
 
 
 if __name__ == "__main__":

@@ -145,8 +145,11 @@ def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
     else:
         aggregated_header = header
 
+    # merge the main col
+    scope_data = scope_data.groupby(scope_data.columns[0]).agg('sum')
+
     # -----process duplicated content in cell-----
-    columns_to_update = scope_data.columns[1:-1]
+    columns_to_update = scope_data.columns[0:-1]
 
     def replace_value(cell_value, column_name):
         return 'all ' + column_name + 's'
@@ -158,8 +161,6 @@ def get_scope_with_aggregate(header, block_data, breakdown, aggregate):
     # scope_data = scope_data.applymap(lambda x: ', '.join(sorted(set(x.split(',')))) if isinstance(x, str) else x)
     # print(scope_data)
 
-    # merge the main col
-    scope_data = scope_data.groupby(scope_data.columns[0]).agg('sum')
 
     is_month = False
     if scope_data.index.__contains__('MAR'):  # trick to sort months
@@ -302,6 +303,8 @@ def save_insight(header, scope_data, ins_category, ins_type, ins_score, header_d
 
     # avoid duplicate headers caused by different orders
     sorted_header = tuple(sorted(map(str, header)))
+    if sorted_header == ('(', ')'):
+        sorted_header = ()
     insight = Insight(scope_data, breakdown, aggregate)
     insight.type = ins_type
     insight.score = ins_score

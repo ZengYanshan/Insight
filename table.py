@@ -8,7 +8,6 @@ import itertools
 import os
 import copy
 import pickle
-import insight
 
 # subspace_list = {}
 cnt_insight_num = 0
@@ -56,6 +55,11 @@ class HierarchicalTable:
         header_dict = self.header_dict
 
         print('processing blocks...')
+
+        # calculate insights of source table
+        no_filter = ()
+        source_block_insight, source_subspace_insight = get_insight(str(no_filter), src_data)
+
         # no multi-processing
         # start here
         global cnt_insight_num, cnt_header_num, subspace_insight, this_insight
@@ -63,12 +67,13 @@ class HierarchicalTable:
         cnt_header_num = 0
         if os.path.exists('headers.txt'):
             os.remove('headers.txt')
+        with open('headers.txt', 'w') as file:
+            for key in header_dict.keys():
+                file.write(str(key) + '\n')
+
         if os.path.exists('vis_list.txt'):
             os.remove('vis_list.txt')
         for header in header_dict:
-            with open('headers.txt', 'w') as file:
-                for key in header_dict.keys():
-                    file.write(str(key) + '\n')
             subspace_insight = self.process_block(header)
             # if node != None:
             #     # if set(idx+col) in curr_focus_headers:
@@ -84,11 +89,12 @@ class HierarchicalTable:
 
                 for header, insights_list in vis_list.items():
                     cnt_header_num += 1
-                    file.write('='*30 + ' [Header] ' + str(cnt_header_num) + ' ' + str(header) + '='*30 + '\n')
+                    file.write('=' * 100 + '\nHeader: ' + str(header) + '\n')
+                    # file.write('='*30 + ' [Header] ' + str(cnt_header_num) + ' ' + str(header) + '='*30 + '\n')
                     for insight in insights_list:
                         cnt_insight_num += 1
                         file.write(f"Insight num: {cnt_insight_num}\n")
-                        file.write(f"Data: \n{insight.data}\n")
+                        # file.write(f"Data: \n{insight.data}\n")
                         file.write(f"Type: {insight.insight_type}\n")
                         file.write(f"Score: {insight.insight_score}\n")
                         file.write(f"Category: {insight.insight_category}\n")
@@ -106,6 +112,7 @@ class HierarchicalTable:
                         file.write(f"Insight{cnt_ins}: \n")
                         file.write(f"Type: {insight.insight_type}\n")
                         file.write(f"Score: {insight.insight_score}\n")
+                        file.write(f"Category: {insight.insight_category}\n")
                         file.write(f"Description: {insight.description}\n")
                         file.write("\n")
         # file_path = 'subspace_list.txt'
