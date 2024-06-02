@@ -38,6 +38,12 @@ Score: 0.6876802191464823
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
 
+Insight3: 
+Type: evenness
+Score: 0.33032714639997907
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('Nintendo', 'Nintendo 3DS (3DS)')
 Insight1: 
@@ -107,6 +113,12 @@ Category: point
 Description: The Sale proportion of Nintendo and Sony is significantly higher than that of other Companys.
 
 Insight2: 
+Type: evenness
+Score: 0.5227045948021891
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: top2
 Score: 0.23290331530031905
 Category: point
@@ -145,6 +157,12 @@ Type: top2
 Score: 0.6608171817705605
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.359683978633349
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('DEC', 'Nintendo')
@@ -209,6 +227,12 @@ Type: top2
 Score: 0.6358739026336793
 Category: point
 Description: The Sale proportion of Sony and Nintendo is significantly higher than that of other Companys.
+
+Insight3: 
+Type: evenness
+Score: 0.49158816429417884
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'Europe')
@@ -1313,6 +1337,12 @@ Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.27556972271252844
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: skewness
 Score: 0.22515381884930777
 Category: shape
@@ -1347,6 +1377,12 @@ Category: point
 Description: The Sale of Year 2013 is an outlier, which is significantly higher than the normal Sale of other Years.
 
 Insight4: 
+Type: evenness
+Score: 0.4621707746511916
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight5: 
 Type: outlier-temporal
 Score: 0.3736879300992838
 Category: point
@@ -1367,6 +1403,12 @@ Type: top2
 Score: 0.6221751412429379
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.5751051824415103
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'JUN', 'Nintendo')
@@ -1798,6 +1840,12 @@ Score: 0.6084642676127724
 Category: point
 Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo Switch (NS) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.3744822206159868
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('MAR', 'Nintendo 3DS (3DS)')
 Insight1: 
@@ -1819,6 +1867,12 @@ Type: top2
 Score: 0.6118820468343452
 Category: point
 Description: The Sale proportion of Sony and Nintendo is significantly higher than that of other Companys.
+
+Insight3: 
+Type: evenness
+Score: 0.5968432286766747
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'MAR')
@@ -1849,6 +1903,12 @@ Type: top2
 Score: 0.614114114114114
 Category: point
 Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo Switch (NS) is significantly higher than that of other Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.2678316553556048
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'MAR', 'Nintendo')
@@ -2363,6 +2423,12 @@ Category: point
 Description: The Sale of Brand PlayStation 4 (PS4) of Year all Years is an outlier, which is significantly higher than the normal Sale of other Brands in the corresponding Years.
 
 Insight3: 
+Type: evenness
+Score: 0.48472293274739564
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight4: 
 Type: outlier
 Score: 0.05143174708310243
 Category: point
@@ -2834,6 +2900,12 @@ Score: 0.777304964539007
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.4731723174774518
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('Japan', 'Nintendo', 'Nintendo 3DS (3DS)')
 Insight1: 
@@ -2865,6 +2937,12 @@ Category: point
 Description: The Sale of Nintendo dominates among all Companys.
 
 Insight2: 
+Type: evenness
+Score: 0.37893442112148445
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: top2
 Score: 0.2908858603066439
 Category: point
@@ -2897,6 +2975,12 @@ Type: top2
 Score: 0.8757062146892655
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.13173564865479426
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'Japan', 'Nintendo')
@@ -3296,6 +3380,12 @@ Score: 0.8373015873015873
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.23685286476813827
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('JUN', 'Japan', 'Nintendo', 'Nintendo 3DS (3DS)')
 Insight1: 
@@ -3431,6 +3521,12 @@ Type: top2
 Score: 0.690775681341719
 Category: point
 Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo Switch (NS) is significantly higher than that of other Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.49285116887968705
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Japan', 'MAR', 'Nintendo', 'Nintendo 3DS (3DS)')
@@ -3609,6 +3705,12 @@ Category: shape
 Description: The Sale has a positively skewed distribution, which means that there are more extreme Sale values on the right side, and the distribution is skewed to the right.
 
 Insight3: 
+Type: evenness
+Score: 0.4836257523627845
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight4: 
 Type: outlier-temporal
 Score: 0.4773739046232767
 Category: point
@@ -3627,6 +3729,12 @@ Type: outlier-temporal
 Score: 0.5735595877312589
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly higher than the normal Sale of other Years.
+
+Insight3: 
+Type: evenness
+Score: 0.06310061243823695
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Japan', 'Nintendo', 'Nintendo 3DS (3DS)', 'SEP')
@@ -3770,6 +3878,12 @@ Score: 0.39275782094110107
 Category: shape
 Description: The Sale exhibit leptokurtic behavior with heavy tails and a sharp peak, indicating a distribution with positive kurtosis.
 
+Insight3: 
+Type: evenness
+Score: 0.3289763887691257
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('Nintendo', 'Nintendo 3DS (3DS)', 'North America')
 Insight1: 
@@ -3779,6 +3893,12 @@ Category: shape
 Description: Sales exhibit a clear downward trend over the Years from 2013 to 2020.
 
 Insight2: 
+Type: evenness
+Score: 0.13462151675967649
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: dominance
 Score: 0.025725232621784277
 Category: point
@@ -3793,6 +3913,12 @@ Category: shape
 Description: Sales exhibit a clear downward trend over the Years from 2013 to 2020.
 
 Insight2: 
+Type: evenness
+Score: 0.13462151675967649
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: dominance
 Score: 0.025725232621784277
 Category: point
@@ -3801,6 +3927,12 @@ Description: The Sale of MAR dominates among all Seasons.
 ====================================================================================================
 Header: ('DEC', 'North America')
 Insight1: 
+Type: evenness
+Score: 0.5462489895125324
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: top2
 Score: 0.40084303492573276
 Category: point
@@ -3833,6 +3965,12 @@ Type: kurtosis
 Score: 0.16466910273070814
 Category: shape
 Description: The Sale exhibit leptokurtic behavior with heavy tails and a sharp peak, indicating a distribution with positive kurtosis.
+
+Insight3: 
+Type: evenness
+Score: 0.023384857774982226
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'Nintendo', 'North America')
@@ -4271,12 +4409,18 @@ Description: The Sale of Nintendo Switch (NS) dominates among all Brands.
 ====================================================================================================
 Header: ('JUN', 'North America')
 Insight1: 
+Type: evenness
+Score: 0.5806093404803527
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: top2
 Score: 0.2919824491424014
 Category: point
 Description: The Sale proportion of Nintendo and Sony is significantly higher than that of other Companys.
 
-Insight2: 
+Insight3: 
 Type: kurtosis
 Score: 0.195136346846755
 Category: shape
@@ -4295,6 +4439,28 @@ Type: outlier-temporal
 Score: 0.5008252447136476
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly higher than the normal Sale of other Years.
+
+Insight3: 
+Type: evenness
+Score: 0.05828076438877927
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('JUN', 'Nintendo', 'Nintendo 3DS (3DS)', 'North America')
+Insight1: 
+Type: evenness
+Score: 0.10250007726524668
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('JUN', 'Nintendo 3DS (3DS)', 'North America')
+Insight1: 
+Type: evenness
+Score: 0.10250007726524668
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'JUN', 'North America')
@@ -4408,6 +4574,12 @@ Score: 0.5177719982661466
 Category: point
 Description: The Sale proportion of Nintendo 3DS (3DS) and Nintendo Switch (NS) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.3796492463851904
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('MAR', 'Nintendo', 'Nintendo 3DS (3DS)', 'North America')
 Insight1: 
@@ -4416,6 +4588,12 @@ Score: 0.41392237154039596
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
 
+Insight2: 
+Type: evenness
+Score: 0.037698808077117896
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('MAR', 'Nintendo 3DS (3DS)', 'North America')
 Insight1: 
@@ -4423,6 +4601,12 @@ Type: outlier-temporal
 Score: 0.41392237154039596
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
+
+Insight2: 
+Type: evenness
+Score: 0.037698808077117896
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'MAR', 'North America')
@@ -4537,6 +4721,12 @@ Type: outlier-temporal
 Score: 0.4469545622673682
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly higher than the normal Sale of other Years.
+
+Insight3: 
+Type: evenness
+Score: 0.01732802513689169
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Nintendo', 'Nintendo 3DS (3DS)', 'North America', 'SEP')
@@ -4797,6 +4987,12 @@ Category: point
 Description: The Sale of Brand PlayStation 4 (PS4) of Year all Years is an outlier, which is significantly higher than the normal Sale of other Brands in the corresponding Years.
 
 Insight2: 
+Type: evenness
+Score: 0.20771050284487602
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: dominance
 Score: 0.08863198458574173
 Category: point
@@ -5195,18 +5391,24 @@ Category: point
 Description: The Sale of Brand PlayStation 4 (PS4) of Year all Years is an outlier, which is significantly higher than the normal Sale of other Brands in the corresponding Years.
 
 Insight2: 
+Type: evenness
+Score: 0.47054093567271926
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: outlier-temporal
 Score: 0.46099061205078184
 Category: point
 Description: The Sale of Year 2013 is an outlier, which is significantly higher than the normal Sale of other Years.
 
-Insight3: 
+Insight4: 
 Type: dominance
 Score: 0.2951167728237791
 Category: point
 Description: The Sale of Sony dominates among all Companys.
 
-Insight4: 
+Insight5: 
 Type: kurtosis
 Score: 0.2815754690807521
 Category: shape
@@ -5378,6 +5580,12 @@ Score: 0.6007660577489687
 Category: point
 Description: The Sale proportion of Sony and Nintendo is significantly higher than that of other Companys.
 
+Insight3: 
+Type: evenness
+Score: 0.49868644722016375
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('MAR', 'Nintendo', 'Other')
 Insight1: 
@@ -5385,6 +5593,22 @@ Type: top2
 Score: 0.7674418604651162
 Category: point
 Description: The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.
+
+====================================================================================================
+Header: ('MAR', 'Nintendo', 'Nintendo 3DS (3DS)', 'Other')
+Insight1: 
+Type: evenness
+Score: 0.28844703147231376
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('MAR', 'Nintendo 3DS (3DS)', 'Other')
+Insight1: 
+Type: evenness
+Score: 0.28844703147231376
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'MAR', 'Other')
@@ -5495,6 +5719,12 @@ Description: The Sale proportion of Nintendo Switch (NS) and PlayStation 4 (PS4)
 ====================================================================================================
 Header: ('Other', 'SEP')
 Insight1: 
+Type: evenness
+Score: 0.2639637654854847
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.07587768969422415
 Category: point
@@ -5857,15 +6087,21 @@ Category: point
 Description: The Sale proportion of 2020 and 2019 is significantly higher than that of other Years.
 
 ====================================================================================================
-Header: ('2017', 'Nintendo Switch (NS)')
+Header: ('2017', 'Nintendo', 'Nintendo Switch (NS)')
 Insight1: 
 Type: top2
 Score: 0.3836915297092289
 Category: point
 Description: The Sale proportion of DEC and JUN is significantly higher than that of other Seasons.
 
+Insight2: 
+Type: evenness
+Score: 0.11069517284969499
+Category: shape
+Description: The Sales are relatively evenly distributed across different Locations and Seasons.
+
 ====================================================================================================
-Header: ('2017', 'Nintendo', 'Nintendo Switch (NS)')
+Header: ('2017', 'Nintendo Switch (NS)')
 Insight1: 
 Type: top2
 Score: 0.3836915297092289
@@ -5919,6 +6155,14 @@ Category: point
 Description: The Sale of Location Europe of Season MAR is an outlier, which is significantly higher than the normal Sale of other Locations in the corresponding Seasons.
 
 ====================================================================================================
+Header: ('2020', 'Nintendo', 'Nintendo Switch (NS)')
+Insight1: 
+Type: evenness
+Score: 0.20582170146707313
+Category: shape
+Description: The Sales are relatively evenly distributed across different Locations and Seasons.
+
+====================================================================================================
 Header: ('JUN', 'Nintendo Switch (NS)')
 Insight1: 
 Type: trend
@@ -5951,7 +6195,7 @@ Category: shape
 Description: Sales exhibit a clear upward trend over the Years from 2013 to 2020.
 
 ====================================================================================================
-Header: ('MAR', 'Nintendo Switch (NS)')
+Header: ('MAR', 'Nintendo', 'Nintendo Switch (NS)')
 Insight1: 
 Type: top2
 Score: 0.3148535564853558
@@ -5959,13 +6203,19 @@ Category: point
 Description: The Sale proportion of 2020 and 2019 is significantly higher than that of other Years.
 
 Insight2: 
+Type: evenness
+Score: 0.19069330360593417
+Category: shape
+Description: The Sales are relatively evenly distributed across different Locations and Years.
+
+Insight3: 
 Type: trend
 Score: 0.15501896332918355
 Category: shape
 Description: Sales exhibit a clear upward trend over the Years from 2013 to 2020.
 
 ====================================================================================================
-Header: ('MAR', 'Nintendo', 'Nintendo Switch (NS)')
+Header: ('MAR', 'Nintendo Switch (NS)')
 Insight1: 
 Type: top2
 Score: 0.3148535564853558
@@ -6051,7 +6301,7 @@ Category: shape
 Description: Sales exhibit a clear upward trend over the Years from 2013 to 2020.
 
 ====================================================================================================
-Header: ('Japan', 'Nintendo Switch (NS)')
+Header: ('Japan', 'Nintendo', 'Nintendo Switch (NS)')
 Insight1: 
 Type: trend
 Score: 0.5637224097119515
@@ -6064,8 +6314,14 @@ Score: 0.16871542716656418
 Category: point
 Description: The Sale proportion of 2020 and 2019 is significantly higher than that of other Years.
 
+Insight3: 
+Type: evenness
+Score: 0.11240714877617153
+Category: shape
+Description: The Sales are relatively evenly distributed across different Seasons and Years.
+
 ====================================================================================================
-Header: ('Japan', 'Nintendo', 'Nintendo Switch (NS)')
+Header: ('Japan', 'Nintendo Switch (NS)')
 Insight1: 
 Type: trend
 Score: 0.5637224097119515
@@ -7708,6 +7964,12 @@ Score: 0.6946671314046706
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.1866105388537922
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('2013', 'Sony')
 Insight1: 
@@ -7801,6 +8063,12 @@ Type: dominance
 Score: 0.7284345047923322
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.21945278959096504
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('DEC', 'Europe', 'PlayStation 3 (PS3)', 'Sony')
@@ -8278,6 +8546,12 @@ Score: 0.4802680565897246
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.41606708311942553
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('2013', 'JUN', 'Sony')
 Insight1: 
@@ -8425,6 +8699,12 @@ Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.40488656311295546
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: top2
 Score: 0.35281312793034175
 Category: point
@@ -8465,6 +8745,12 @@ Type: dominance
 Score: 0.6414164051994622
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.43921563996308155
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Europe', 'MAR', 'PlayStation 3 (PS3)', 'Sony')
@@ -8709,6 +8995,12 @@ Description: The Sale proportion of North America and Europe is significantly hi
 ====================================================================================================
 Header: ('SEP', 'Sony')
 Insight1: 
+Type: evenness
+Score: 0.5291911569650987
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.5195670274771025
 Category: point
@@ -8749,6 +9041,12 @@ Type: dominance
 Score: 0.5758139534883722
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.36670084443173057
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Europe', 'PlayStation 3 (PS3)', 'SEP', 'Sony')
@@ -8893,6 +9191,12 @@ Category: point
 Description: The Sale proportion of PlayStation 4 (PS4) and PlayStation Vita (PSV) is significantly higher than that of other Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.366744778372198
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: trend
 Score: 0.08500896911124359
 Category: shape
@@ -8949,6 +9253,12 @@ Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 ====================================================================================================
 Header: ('2013', 'Japan', 'Sony')
 Insight1: 
+Type: evenness
+Score: 0.316668346437595
+Category: shape
+Description: The Sales are relatively evenly distributed across different Brands and Seasons.
+
+Insight2: 
 Type: trend
 Score: 0.2910112935792197
 Category: shape
@@ -9158,6 +9468,12 @@ Score: 0.7475369458128078
 Category: point
 Description: The Sale proportion of PlayStation 4 (PS4) and PlayStation Vita (PSV) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.4396348728843398
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('JUN', 'Japan', 'PlayStation 3 (PS3)', 'Sony')
 Insight1: 
@@ -9226,6 +9542,12 @@ Score: 0.6973270440251572
 Category: point
 Description: The Sale proportion of PlayStation 4 (PS4) and PlayStation Vita (PSV) is significantly higher than that of other Brands.
 
+Insight2: 
+Type: evenness
+Score: 0.29818534668863794
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('Japan', 'MAR', 'PlayStation 3 (PS3)', 'Sony')
 Insight1: 
@@ -9287,6 +9609,12 @@ Category: point
 Description: The Sale proportion of PlayStation 4 (PS4) and PlayStation Vita (PSV) is significantly higher than that of other Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.21004845876471645
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: trend
 Score: 0.007322144773886558
 Category: shape
@@ -9349,18 +9677,24 @@ Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.46632972599946254
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: outlier-temporal
 Score: 0.4290897047129115
 Category: point
 Description: The Sale of Year 2013 is an outlier, which is significantly lower than the normal Sale of other Years.
 
-Insight3: 
+Insight4: 
 Type: kurtosis
 Score: 0.17636366383741098
 Category: shape
 Description: The Sale exhibit leptokurtic behavior with heavy tails and a sharp peak, indicating a distribution with positive kurtosis.
 
-Insight4: 
+Insight5: 
 Type: dominance
 Score: 0.01573345673299409
 Category: point
@@ -9401,6 +9735,12 @@ Type: dominance
 Score: 0.7731421121251629
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.12650567328718876
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('DEC', 'North America', 'PlayStation 3 (PS3)', 'Sony')
@@ -9565,12 +9905,18 @@ Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
 Insight2: 
+Type: evenness
+Score: 0.5837778656680253
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: outlier-temporal
 Score: 0.44756796497909007
 Category: point
 Description: The Sale of Year 2013 is an outlier, which is significantly lower than the normal Sale of other Years.
 
-Insight3: 
+Insight4: 
 Type: outlier-temporal
 Score: 0.35018320263845243
 Category: point
@@ -9631,6 +9977,12 @@ Type: dominance
 Score: 0.7302961275626423
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.3483116759033922
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('MAR', 'North America', 'PlayStation 3 (PS3)', 'Sony')
@@ -9757,6 +10109,12 @@ Type: outlier-temporal
 Score: 0.5064973718093337
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
+
+Insight3: 
+Type: evenness
+Score: 0.5046406765034093
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Other', 'PlayStation 3 (PS3)')
@@ -10016,6 +10374,12 @@ Score: 0.298360655737705
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 
+Insight3: 
+Type: evenness
+Score: 0.13306118565352132
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('JUN', 'Other', 'PlayStation 3 (PS3)', 'Sony')
 Insight1: 
@@ -10063,6 +10427,12 @@ Type: dominance
 Score: 0.6791208791208792
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.23426855597629892
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('MAR', 'Other', 'PlayStation 3 (PS3)', 'Sony')
@@ -10119,6 +10489,12 @@ Type: dominance
 Score: 0.368421052631579
 Category: point
 Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
+
+Insight2: 
+Type: evenness
+Score: 0.26202793407670066
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Other', 'PlayStation 3 (PS3)', 'SEP', 'Sony')
@@ -10197,6 +10573,20 @@ Category: point
 Description: The Sale proportion of Europe and North America is significantly higher than that of other Locations.
 
 ====================================================================================================
+Header: ('Europe', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.6415610476989393
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
+Type: evenness
+Score: 0.0891885379615982
+Category: shape
+Description: The Sales are relatively evenly distributed across different Seasons and Years.
+
+====================================================================================================
 Header: ('Europe', 'PlayStation 4 (PS4)')
 Insight1: 
 Type: evenness
@@ -10205,10 +10595,34 @@ Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
-Header: ('Europe', 'PlayStation 4 (PS4)', 'Sony')
+Header: ('DEC', 'PlayStation 4 (PS4)')
 Insight1: 
 Type: evenness
-Score: 0.6415610476989393
+Score: 0.29195583881624465
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('DEC', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.29195583881624465
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('DEC', 'Europe', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.25961714266788194
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('DEC', 'Europe', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.25961714266788194
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
@@ -10499,6 +10913,22 @@ Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
+Header: ('Europe', 'JUN', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.4163602468435157
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'JUN', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.4163602468435157
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('2014', 'JUN', 'PlayStation 4 (PS4)', 'Sony')
 Insight1: 
 Type: top2
@@ -10581,6 +11011,12 @@ Description: The Sale of Europe dominates among all Locations.
 ====================================================================================================
 Header: ('MAR', 'PlayStation 4 (PS4)', 'Sony')
 Insight1: 
+Type: evenness
+Score: 0.44678811545086194
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: top2
 Score: 0.4191191603210537
 Category: point
@@ -10589,10 +11025,32 @@ Description: The Sale proportion of North America and Europe is significantly hi
 ====================================================================================================
 Header: ('MAR', 'PlayStation 4 (PS4)')
 Insight1: 
+Type: evenness
+Score: 0.44678811545086194
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: top2
 Score: 0.4191191603210537
 Category: point
 Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.
+
+====================================================================================================
+Header: ('Europe', 'MAR', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.4224308051259038
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'MAR', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.4224308051259038
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'MAR', 'PlayStation 4 (PS4)', 'Sony')
@@ -10707,6 +11165,38 @@ Category: point
 Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.
 
 ====================================================================================================
+Header: ('PlayStation 4 (PS4)', 'SEP')
+Insight1: 
+Type: evenness
+Score: 0.5294889248956682
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('PlayStation 4 (PS4)', 'SEP', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.5294889248956682
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'PlayStation 4 (PS4)', 'SEP', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.37959097838325473
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'PlayStation 4 (PS4)', 'SEP')
+Insight1: 
+Type: evenness
+Score: 0.37959097838325473
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('2014', 'PlayStation 4 (PS4)', 'SEP', 'Sony')
 Insight1: 
 Type: top2
@@ -10785,6 +11275,22 @@ Type: dominance
 Score: 0.11764705882352944
 Category: point
 Description: The Sale of Europe dominates among all Locations.
+
+====================================================================================================
+Header: ('Japan', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.3283083945320595
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Japan', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.3283083945320595
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'Japan', 'PlayStation 4 (PS4)', 'Sony')
@@ -10907,6 +11413,38 @@ Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
+Header: ('Japan', 'MAR', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.11354725943806487
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Japan', 'MAR', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.11354725943806487
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Japan', 'PlayStation 4 (PS4)', 'SEP', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.14859936137602014
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Japan', 'PlayStation 4 (PS4)', 'SEP')
+Insight1: 
+Type: evenness
+Score: 0.14859936137602014
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('North America', 'PlayStation 4 (PS4)', 'Sony')
 Insight1: 
 Type: evenness
@@ -10933,6 +11471,22 @@ Type: dominance
 Score: 0.009569377990430672
 Category: point
 Description: The Sale of MAR dominates among all Seasons.
+
+====================================================================================================
+Header: ('DEC', 'North America', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.28202755688972037
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('DEC', 'North America', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.28202755688972037
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2016', 'North America', 'PlayStation 4 (PS4)', 'Sony')
@@ -10999,6 +11553,22 @@ Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
+Header: ('MAR', 'North America', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.5510116504006568
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('MAR', 'North America', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.5510116504006568
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('North America', 'PlayStation 4 (PS4)', 'SEP', 'Sony')
 Insight1: 
 Type: evenness
@@ -11011,6 +11581,22 @@ Header: ('North America', 'PlayStation 4 (PS4)', 'SEP')
 Insight1: 
 Type: evenness
 Score: 0.7530108615188891
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Other', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.43891025669125905
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Other', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.43891025669125905
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
@@ -11077,6 +11663,54 @@ Type: trend
 Score: 0.865961295969999
 Category: shape
 Description: Sales exhibit a clear downward trend over the Seasons from MAR to DEC.
+
+====================================================================================================
+Header: ('JUN', 'Other', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.291703803706739
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('JUN', 'Other', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.291703803706739
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('MAR', 'Other', 'PlayStation 4 (PS4)', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.19613471808763272
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('MAR', 'Other', 'PlayStation 4 (PS4)')
+Insight1: 
+Type: evenness
+Score: 0.19613471808763272
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Other', 'PlayStation 4 (PS4)', 'SEP', 'Sony')
+Insight1: 
+Type: evenness
+Score: 0.34191239949317653
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Other', 'PlayStation 4 (PS4)', 'SEP')
+Insight1: 
+Type: evenness
+Score: 0.34191239949317653
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('PlayStation Vita (PSV)', 'Sony')
@@ -12071,18 +12705,24 @@ Category: point
 Description: The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.
 
 Insight2: 
+Type: evenness
+Score: 0.3631394101500549
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: skewness
 Score: 0.3145635888603453
 Category: shape
 Description: The Sale has a positively skewed distribution, which means that there are more extreme Sale values on the right side, and the distribution is skewed to the right.
 
-Insight3: 
+Insight4: 
 Type: dominance
 Score: 0.2780817508850981
 Category: point
 Description: The Sale of North America dominates among all Locations.
 
-Insight4: 
+Insight5: 
 Type: dominance
 Score: 0.027357579658834785
 Category: point
@@ -12155,6 +12795,12 @@ Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
 
 Insight2: 
+Type: evenness
+Score: 0.24611749952018025
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight3: 
 Type: trend
 Score: 0.059713891622591435
 Category: shape
@@ -12804,6 +13450,12 @@ Score: 0.17415981112050066
 Category: point
 Description: The Sale of Year 2019 is an outlier, which is significantly lower than the normal Sale of other Years.
 
+Insight4: 
+Type: evenness
+Score: 0.1582805020014999
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('JUN', 'Microsoft', 'Xbox 360 (X360)')
 Insight1: 
@@ -12977,6 +13629,12 @@ Description: The Sale of North America dominates among all Locations.
 ====================================================================================================
 Header: ('MAR', 'Microsoft')
 Insight1: 
+Type: evenness
+Score: 0.4094246735504832
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.3765664160401003
 Category: point
@@ -13029,6 +13687,12 @@ Type: outlier-temporal
 Score: 0.5200003331365456
 Category: point
 Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
+
+Insight2: 
+Type: evenness
+Score: 0.26758093333754696
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2013', 'MAR', 'Microsoft')
@@ -13273,6 +13937,14 @@ Category: point
 Description: The Sale proportion of North America and Other is significantly higher than that of other Locations.
 
 ====================================================================================================
+Header: ('Europe', 'Microsoft', 'SEP')
+Insight1: 
+Type: evenness
+Score: 0.2823649952796339
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('2013', 'Microsoft', 'SEP')
 Insight1: 
 Type: top2
@@ -13459,8 +14131,28 @@ Category: point
 Description: The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.
 
 ====================================================================================================
+Header: ('Japan', 'MAR', 'Microsoft')
+Insight1: 
+Type: evenness
+Score: 0.3876275643042053
+Category: shape
+Description: The Sales are relatively evenly distributed across different Brands and Years.
+
+Insight2: 
+Type: evenness
+Score: 0.3876275643042053
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('Microsoft', 'North America')
 Insight1: 
+Type: evenness
+Score: 0.4766600704868367
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.10652228657768825
 Category: point
@@ -13770,6 +14462,12 @@ Score: 0.585544734748237
 Category: point
 Description: The Sale of Year 2013 is an outlier, which is significantly higher than the normal Sale of other Years.
 
+Insight2: 
+Type: evenness
+Score: 0.45649130088773004
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
 ====================================================================================================
 Header: ('JUN', 'Microsoft', 'North America', 'Xbox 360 (X360)')
 Insight1: 
@@ -13785,6 +14483,14 @@ Type: dominance
 Score: 0.53125
 Category: point
 Description: The Sale of 2013 dominates among all Years.
+
+====================================================================================================
+Header: ('MAR', 'Microsoft', 'North America')
+Insight1: 
+Type: evenness
+Score: 0.4599657603057987
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('MAR', 'Microsoft', 'North America', 'Xbox 360 (X360)')
@@ -13821,6 +14527,12 @@ Type: outlier-temporal
 Score: 0.572396211217744
 Category: point
 Description: The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.
+
+Insight2: 
+Type: evenness
+Score: 0.1685139087474501
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Microsoft', 'North America', 'SEP', 'Xbox 360 (X360)')
@@ -14023,6 +14735,14 @@ Category: point
 Description: The Sale of 2013 dominates among all Years.
 
 ====================================================================================================
+Header: ('MAR', 'Microsoft', 'Other')
+Insight1: 
+Type: evenness
+Score: 0.3753474842952378
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('MAR', 'Microsoft', 'Other', 'Xbox 360 (X360)')
 Insight1: 
 Type: trend
@@ -14071,18 +14791,24 @@ Description: The Sale of 2014 dominates among all Years.
 ====================================================================================================
 Header: ('Microsoft', 'Xbox One (XOne)')
 Insight1: 
+Type: evenness
+Score: 0.5316073317760821
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.29794238683127583
 Category: point
 Description: The Sale of North America dominates among all Locations.
 
-Insight2: 
+Insight3: 
 Type: skewness
 Score: 0.15226650407036732
 Category: shape
 Description: The Sale has a positively skewed distribution, which means that there are more extreme Sale values on the right side, and the distribution is skewed to the right.
 
-Insight3: 
+Insight4: 
 Type: dominance
 Score: 0.07242798353909463
 Category: point
@@ -14091,16 +14817,30 @@ Description: The Sale of MAR dominates among all Seasons.
 ====================================================================================================
 Header: ('Xbox One (XOne)',)
 Insight1: 
+Type: evenness
+Score: 0.5316073317760821
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.29794238683127583
 Category: point
 Description: The Sale of North America dominates among all Locations.
 
-Insight2: 
+Insight3: 
 Type: dominance
 Score: 0.07242798353909463
 Category: point
 Description: The Sale of MAR dominates among all Seasons.
+
+====================================================================================================
+Header: ('Europe', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.24901236542449068
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('DEC', 'Microsoft', 'Xbox One (XOne)')
@@ -14117,6 +14857,14 @@ Type: top2
 Score: 0.6210579857578841
 Category: point
 Description: The Sale proportion of North America and Europe is significantly higher than that of other Locations.
+
+====================================================================================================
+Header: ('Europe', 'Microsoft', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.24901236542449068
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'Microsoft', 'Xbox One (XOne)')
@@ -14487,6 +15235,22 @@ Category: point
 Description: The Sale of North America dominates among all Locations.
 
 ====================================================================================================
+Header: ('Europe', 'JUN', 'Microsoft', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.027749686439280552
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'JUN', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.027749686439280552
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('2014', 'JUN', 'Microsoft', 'Xbox One (XOne)')
 Insight1: 
 Type: dominance
@@ -14569,6 +15333,12 @@ Description: The Sale of North America dominates among all Locations.
 ====================================================================================================
 Header: ('MAR', 'Microsoft', 'Xbox One (XOne)')
 Insight1: 
+Type: evenness
+Score: 0.509056078546031
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.37145049884881054
 Category: point
@@ -14577,10 +15347,32 @@ Description: The Sale of North America dominates among all Locations.
 ====================================================================================================
 Header: ('MAR', 'Xbox One (XOne)')
 Insight1: 
+Type: evenness
+Score: 0.509056078546031
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.37145049884881054
 Category: point
 Description: The Sale of North America dominates among all Locations.
+
+====================================================================================================
+Header: ('Europe', 'MAR', 'Microsoft', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.27401865395589065
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'MAR', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.27401865395589065
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'MAR', 'Microsoft', 'Xbox One (XOne)')
@@ -14681,6 +15473,12 @@ Description: The Sale of North America dominates among all Locations.
 ====================================================================================================
 Header: ('Microsoft', 'SEP', 'Xbox One (XOne)')
 Insight1: 
+Type: evenness
+Score: 0.313376734802459
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.22905027932960897
 Category: point
@@ -14689,10 +15487,32 @@ Description: The Sale of North America dominates among all Locations.
 ====================================================================================================
 Header: ('SEP', 'Xbox One (XOne)')
 Insight1: 
+Type: evenness
+Score: 0.313376734802459
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+Insight2: 
 Type: dominance
 Score: 0.22905027932960897
 Category: point
 Description: The Sale of North America dominates among all Locations.
+
+====================================================================================================
+Header: ('Europe', 'Microsoft', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.17158259735788084
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Europe', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.17158259735788084
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'Microsoft', 'SEP', 'Xbox One (XOne)')
@@ -14835,6 +15655,22 @@ Category: point
 Description: The Sale of MAR dominates among all Seasons.
 
 ====================================================================================================
+Header: ('DEC', 'Microsoft', 'North America', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.001413601552991306
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('DEC', 'North America', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.001413601552991306
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('2014', 'Microsoft', 'North America', 'Xbox One (XOne)')
 Insight1: 
 Type: dominance
@@ -14975,12 +15811,34 @@ Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
+Header: ('Microsoft', 'North America', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.5484950174014747
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('North America', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.5484950174014747
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
 Header: ('Microsoft', 'Other', 'Xbox One (XOne)')
 Insight1: 
 Type: top2
 Score: 0.4403765690376571
 Category: point
 Description: The Sale proportion of MAR and DEC is significantly higher than that of other Seasons.
+
+Insight2: 
+Type: evenness
+Score: 0.03802080738854663
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('Other', 'Xbox One (XOne)')
@@ -14989,6 +15847,12 @@ Type: top2
 Score: 0.4403765690376571
 Category: point
 Description: The Sale proportion of MAR and DEC is significantly higher than that of other Seasons.
+
+Insight2: 
+Type: evenness
+Score: 0.03802080738854663
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
 ====================================================================================================
 Header: ('2014', 'Microsoft', 'Other', 'Xbox One (XOne)')
@@ -15053,4 +15917,36 @@ Type: dominance
 Score: 0.35897435897435903
 Category: point
 Description: The Sale of MAR dominates among all Seasons.
+
+====================================================================================================
+Header: ('MAR', 'Microsoft', 'Other', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.4194258595802931
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('MAR', 'Other', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.4194258595802931
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Microsoft', 'Other', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.2407038705189537
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
+
+====================================================================================================
+Header: ('Other', 'SEP', 'Xbox One (XOne)')
+Insight1: 
+Type: evenness
+Score: 0.2407038705189537
+Category: shape
+Description: The Sales are relatively evenly distributed across different Years.
 
