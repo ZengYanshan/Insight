@@ -89,50 +89,16 @@ table_structure = {
 # }
 
 color_scheme = {
-    'Company': {
-        'Nintendo': '#66c2a5',
-        'Sony': '#fc8d62',
-        'Microsoft': '#8da0cb',
-        'default': '#e78ac3'
-    },
-    'Brand': {
-        'Nintendo 3DS (3DS)': '#a6cee3',
-        'Nintendo DS (DS)': '#1f78b4',
-        'Nintendo Switch (NS)': '#b2df8a',
-        'Wii (Wii)': '#33a02c',
-        'Wii U (WiiU)': '#fb9a99',
-        'PlayStation 3 (PS3)': '#e31a1c',
-        'PlayStation 4 (PS4)': '#fdbf6f',
-        'PlayStation Vita (PSV)': '#ff7f00',
-        'Xbox 360 (X360)': '#cab2d6',
-        'Xbox One (XOne)': '#6a3d9a',
-        'default': '#b15928'
-    },
-    'Location': {
-        'Europe': '#fbb4ae',
-        'Japan': '#b3cde3',
-        'North America': '#ccebc5',
-        'Other': '#decbe4',
-        'default': '#fed9a6'
-    },
-    'Season': {
-        'DEC': '#7fc97f',
-        'JUN': '#beaed4',
-        'MAR': '#fdc086',
-        'SEP': '#ffff99',
-        'default': '#386cb0'
-    },
-    'Year': {
-        '2013': '#8dd3c7',
-        '2014': '#ffffb3',
-        '2015': '#bebada',
-        '2016': '#fb8072',
-        '2017': '#80b1d3',
-        '2018': '#fdb462',
-        '2019': '#b3de69',
-        '2020': '#fccde5',
-        'default': '#d9d9d9'
-    }
+    'Company': {'Nintendo': '#66c2a5', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#a6d854'},
+    'Brand': {'Nintendo 3DS (3DS)': '#a6cee3', 'Nintendo DS (DS)': '#1f78b4', 'Nintendo Switch (NS)': '#b2df8a',
+              'Wii (Wii)': '#33a02c', 'Wii U (WiiU)': '#fb9a99', 'PlayStation 3 (PS3)': '#e31a1c',
+              'PlayStation 4 (PS4)': '#fdbf6f', 'PlayStation Vita (PSV)': '#ff7f00', 'Xbox 360 (X360)': '#cab2d6',
+              'Xbox One (XOne)': '#6a3d9a', 'default': '#b15928'},
+    'Location': {'Europe': '#fbb4ae', 'Japan': '#b3cde3', 'North America': '#ccebc5', 'Other': '#decbe4',
+                 'default': '#fed9a6'},
+    'Season': {'DEC': '#7fc97f', 'JUN': '#beaed4', 'MAR': '#fdc086', 'SEP': '#ffff99', 'default': '#386cb0'},
+    'Year': {'2013': '#8dd3c7', '2014': '#ffffb3', '2015': '#bc80bd', '2016': '#fb8072',
+             '2017': '#80b1d3', '2018': '#fdb462', '2019': '#b3de69', '2020': '#fccde5', 'default': '#bebada'}
 }
 
 
