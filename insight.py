@@ -345,13 +345,13 @@ def get_scope_for_compound(header, block_data):
 
                         score = corr_coef**2 * (1 - p_value)
 
-                        if score > score_criterion and corr_coef > 0:  ### could be adjusted
+                        if score > score_criterion and corr_coef > 0 and p_value < 0.05 :  ### could be adjusted
                             correlation_find[z_first.name][1].append(
                                 z_second.name)
                             correlation_find[z_second.name][1].append(
                                 z_first.name)
 
-                        if score > filter_criterion and corr_coef > 0:  ### could be adjusted
+                        if score > filter_criterion and corr_coef > 0 and p_value < 0.05 :  ### could be adjusted
                             filter_insight_helper[z_first.name].append(
                                 z_second.name)
                             filter_insight_helper[z_second.name].append(
