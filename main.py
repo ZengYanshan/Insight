@@ -227,6 +227,31 @@ def get_next_insights():
     print(f"response: \n{response}")
     return jsonify(response)
 
+@app.route('/summary', methods=['POST'])
+@cross_origin()
+def get_report_summary():
+    print("--------------------------------------------")
+    print("get_report_summary")
+    print(f"data: {request.json}")
+    tree = request.json
+    nodes = []
+    edges = []
+    nodes = tree.get('nodes')
+    edges = tree.get('edges')
+
+    summary = run(summarize_LLM(tree))
+
+    response = {
+        "code": 200,
+        "msg": "",
+        "data": {
+            "report text": summary
+        }
+    }
+
+    print(f"response: \n{response}")
+    return jsonify(response)
+
 
 def create_table(name, path, req_id):
     data_source = DataSource(name, path, req_id)

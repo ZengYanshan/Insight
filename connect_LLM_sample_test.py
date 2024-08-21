@@ -526,16 +526,20 @@ def parse_response_select_group(response, query, insight_list):
                         sort_insight_prompt += f"Insight {insight_count}: In subspace {header}, {insight_info['description']}\n"
                         insight_count += 1
                     header_count += 1
-            sort_insight_prompt += f"""\nNext, your task is to select top-3 insights based on their relation to the current insight.
+            sort_insight_prompt += f"""\nNext, your task is to select top-5 insights based on their relation to the current insight.
 The relation between the current insight and the insight you choose represents the logical reasoning process from the current insight to the next insight. It describes why deriving the next insight from the current one is meaningful and reasonable. This logical reasoning is a part of the data exploration chain, where each step needs to be well-founded and justified. The relation can include the following aspects:
 1. Logical Reasoning: Explain why the current insight leads us to consider the next insight. For example, if the current insight reveals that a particular data point is an outlier, the next insight might analyze the proportion of this outlier in a key attribute, indicating the reason for the anomaly.
 2. Data Association: Describe the association or patterns between data points. For instance, from the distribution of one variable, infer the distribution of other variables.
 3. Problem Relevance: Explain how the new insight helps address the data analysis question: "{query}". For example, if the question concerns the reasons for a decline in sales, and the current insight shows an anomaly in sales for a particular month, the next insight might analyze the market conditions of that month (comparing sales in different regions, against other brands, or with the same month in previous years).
-Based on these criteria, select top-3 insights from the ones provided that most effectively follow from the current insight. Additionally, write out the relation for each selected insight, explaining why it was chosen and how it logically follows from the current insight, demonstrating strong logical reasoning, data association, and problem relevance.
+Based on these criteria, select top-5 insights from the ones provided that most effectively follow from the current insight. Additionally, write out the relation for each selected insight, explaining why it was chosen and how it logically follows from the current insight, demonstrating strong logical reasoning, data association, and problem relevance.
 Your answer must follow the format below: 
 1. Insight x. Relation: xxx
 2. Insight x. Relation: xxx
 3. Insight x. Relation: xxx
+4. Insight x. Relation: xxx
+5. Insight x. Relation: xxx
+Do not refer to the insights by their IDs in the report. Instead, use descriptive language to convey the insights and their relationships.
+Please answer strictly according to the format and do not add additional markings such as bold, punctuation marks, etc.
 """
             return insights_info_dict, sort_insight_prompt
 

@@ -88,15 +88,33 @@ table_structure = {
 #     'Year': ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5']
 # }
 
+# color_scheme = {
+#     'Company': {'Nintendo': '#66c2a5', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#a6d854'},
+#     'Brand': {'Nintendo 3DS (3DS)': '#a6cee3', 'Nintendo DS (DS)': '#1f78b4', 'Nintendo Switch (NS)': '#b2df8a',
+#               'Wii (Wii)': '#33a02c', 'Wii U (WiiU)': '#fb9a99', 'PlayStation 3 (PS3)': '#e31a1c',
+#               'PlayStation 4 (PS4)': '#fdbf6f', 'PlayStation Vita (PSV)': '#ff7f00', 'Xbox 360 (X360)': '#cab2d6',
+#               'Xbox One (XOne)': '#6a3d9a', 'default': '#b15928'},
+#     'Location': {'Europe': '#fbb4ae', 'Japan': '#b3cde3', 'North America': '#ccebc5', 'Other': '#decbe4',
+#                  'default': '#fed9a6'},
+#     'Season': {'DEC': '#7fc97f', 'JUN': '#beaed4', 'MAR': '#fdc086', 'SEP': '#ffff99', 'default': '#386cb0'},
+#     'Year': {'2013': '#8dd3c7', '2014': '#ffffb3', '2015': '#bc80bd', '2016': '#fb8072',
+#              '2017': '#80b1d3', '2018': '#fdb462', '2019': '#b3de69', '2020': '#fccde5', 'default': '#bebada'}
+# }
+
 color_scheme = {
-    'Company': {'Nintendo': '#66c2a5', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#a6d854'},
+
+    'Company': {'Nintendo': '#a6d854', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#ffd92f'},
+
     'Brand': {'Nintendo 3DS (3DS)': '#a6cee3', 'Nintendo DS (DS)': '#1f78b4', 'Nintendo Switch (NS)': '#b2df8a',
               'Wii (Wii)': '#33a02c', 'Wii U (WiiU)': '#fb9a99', 'PlayStation 3 (PS3)': '#e31a1c',
               'PlayStation 4 (PS4)': '#fdbf6f', 'PlayStation Vita (PSV)': '#ff7f00', 'Xbox 360 (X360)': '#cab2d6',
               'Xbox One (XOne)': '#6a3d9a', 'default': '#b15928'},
+
     'Location': {'Europe': '#fbb4ae', 'Japan': '#b3cde3', 'North America': '#ccebc5', 'Other': '#decbe4',
                  'default': '#fed9a6'},
+
     'Season': {'DEC': '#7fc97f', 'JUN': '#beaed4', 'MAR': '#fdc086', 'SEP': '#ffff99', 'default': '#386cb0'},
+
     'Year': {'2013': '#8dd3c7', '2014': '#ffffb3', '2015': '#bc80bd', '2016': '#fb8072',
              '2017': '#80b1d3', '2018': '#fdb462', '2019': '#b3de69', '2020': '#fccde5', 'default': '#bebada'}
 }
@@ -116,8 +134,8 @@ def create_bar_chart(d):
     d = d.reset_index()
     d.columns = ['variable', 'value']
 
-    domain = []
-    color_range = []
+    # domain = []
+    # color_range = []
     column_name = find_column_name(d, table_structure)
 
     for row in d.itertuples(index=False):
@@ -125,37 +143,24 @@ def create_bar_chart(d):
         for i in range(len(d.columns)):
             v[d.columns[i]] = row[i]
         values.append(v)
-        if v['variable'] not in domain:
-            domain.append(v['variable'])
-            color_range.append(color_scheme[column_name][str(v['variable'])])
+    #     if v['variable'] not in domain:
+    #         domain.append(v['variable'])
+    #         color_range.append(color_scheme[column_name][str(v['variable'])])
 
-    mark = 'bar'
+    # no need to use multi-color with legend
+    color_line = color_scheme[column_name]['default']
+
+    mark = {
+        "type": "bar",
+        "color": color_line
+    }
     encoding = {
-        'x': {
-            'field': d.columns[-2],
-            'type': 'nominal',
-            "title": None
-        },
-        'y': {
-            'field': d.columns[-1],
-            'type': 'quantitative',
-            "title": None
-        },
-        'color': {
-            'field': 'variable',
-            'type': 'nominal',
-            'scale': {
-                "domain": domain,
-                "range": color_range
-            },
-        },
-        'tooltip': [{
-            'field': d.columns[-2],
-            'type': 'nominal'
-        }, {
-            'field': d.columns[-1],
-            'type': 'quantitative'
-        }]
+        'x': {'field': d.columns[-2], 'type': 'nominal', "title": None},
+        'y': {'field': d.columns[-1], 'type': 'quantitative', "title": None},
+        'tooltip': [
+            {'field': d.columns[-2], 'type': 'nominal'},
+            {'field': d.columns[-1], 'type': 'quantitative'}
+        ]
     }
     data = {'values': values}
     return {'data': data, 'mark': mark, 'encoding': encoding}
@@ -201,8 +206,10 @@ def create_pie_chart_dominance(d):
             },
             # Adding legend for dominance categories
             'legend': {
+                'orient': 'bottom',
                 "title": None,
                 "symbolType": "square",
+                "direction": "horizontal",
                 "values": [str(top1_name)]
             }
         },
@@ -229,7 +236,15 @@ def create_pie_chart_dominance(d):
     }
 
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    config = {
+        'legend': {
+            'layout': {
+                'anchor': 'middle',  # 设置图例居中
+                'padding': 10
+            }
+        }
+    }
+    return {'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
 
 
 def create_pie_chart_top2(d):
@@ -274,8 +289,10 @@ def create_pie_chart_top2(d):
             },
             # Adding legend for top 2 categories
             'legend': {
+                'orient': 'bottom',
                 "title": None,
                 "symbolType": "square",
+                "direction": "horizontal",
                 "values": [str(top1_name), str(top2_name)]
             }
         },
@@ -302,7 +319,15 @@ def create_pie_chart_top2(d):
     }
 
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    config = {
+        'legend': {
+            'layout': {
+                'anchor': 'middle',  # 设置图例居中
+                'padding': 10
+            }
+        }
+    }
+    return {'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
 
 
 def create_area_chart(d, color='#4682b4'):
@@ -438,6 +463,15 @@ def create_multi_line_chart(d):
             domain.append(row[1])
             color_range.append(color_scheme[multline_name][str(row[1])])
 
+    # # Calculate the number of columns for the legend
+    # num_legend_items = len(domain)
+    # if num_legend_items <= 3:
+    #     legend_columns = 3
+    # elif num_legend_items <= 6:
+    #     legend_columns = 2
+    # else:
+    #     legend_columns = 3
+
     mark = {'type': 'line', 'interpolate': 'monotone'}
     encoding = {
         'x': {
@@ -458,7 +492,10 @@ def create_multi_line_chart(d):
             'field': d.columns[1],
             'type': 'nominal',
             'legend': {
-                'orient': 'right'
+                'orient': 'bottom',
+                'columns': 3
+                # 'titleFontSize': 10,
+                # 'labelFontSize': 8
             },
             'title': multline_name,
             'scale': {
