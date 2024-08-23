@@ -245,7 +245,7 @@ def get_report_summary():
         "code": 200,
         "msg": "",
         "data": {
-            "report text": summary
+            "summary": summary
         }
     }
 
