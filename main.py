@@ -234,11 +234,6 @@ def get_report_summary():
     print("get_report_summary")
     print(f"data: {request.json}")
     tree = request.json
-    nodes = []
-    edges = []
-    nodes = tree.get('nodes')
-    edges = tree.get('edges')
-
     summary = run(summarize_LLM(tree))
 
     response = {

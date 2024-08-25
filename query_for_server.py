@@ -189,26 +189,33 @@ async def qa_LLM(query, item, insight_list, node_id):
 
     return next_nodes, node_id
 
-# async def summarize_LLM(tree):
-def summarize_LLM(tree):
+async def summarize_LLM(tree):
+# def summarize_LLM(tree):
     print("=====summarize_LLM=====")
     prompt1 = """
-You are given a data structure called an "insight tree," which consists of nodes and edges. Each node represents a data insight with specific characteristics, and each edge describes the relationship between these insights. Your task is to generate a summary report that reflects the user's exploration journey through this insight tree.
+You are given a data structure called an "insight tree," which consists of nodes and edges. Each node represents a data insight, and each edge describes the relationship between these insights. Your task is to generate a summary report that reflects the user's exploration journey through this insight tree.
 Here is the insight tree:
 Nodes:
-- Each node has an `id`, a `type` that indicates the kind of insight (such as trend, outliers), a `description` that explains the data pattern of insight, and a `query` which represents the user's question or the data aspect that led to this insight.
+- Each node has an `id`, a `type` that indicates the kind of insight (such as trend, outliers), a `description` that explains the data pattern of insight.
 Edges:
-- Each edge has a `source` and a `target`, representing the starting and ending nodes of a relationship. It also includes a `query`, which reflects the question or aspect that connects these insights, a `relationship` that describes how the source insight leads to the target insight by semantically logical reasoning, and a `relType` indicating the structural type of relationship (same-level, generalization or specification).
+- Each edge has:
+  - a `source` and a `target`, representing the starting and ending nodes of a relationship. 
+  - a `query`, which reflects the question or aspect that connects these insights.
+  - a `relationship` that describes how the source insight leads to the target insight by semantically logical reasoning.
+  - a `relType` indicating the structural type of relationship (same-level, generalization or specification).
 Please analyze the provided insight tree and generate a coherent and logical report that outlines the user's exploration process, highlights significant insights discovered, and describes how the insights are interconnected. The report should also capture the logical reasoning behind the transitions from one insight to another.
 Below is the JSON structure representing the insight tree:
+
     """
 
     tree_info = str(tree)
 
     prompt2 = """
+   
+Please note the following points:  
 The purpose of this summary report is to help the user automatically summarize their exploration process and findings, effectively creating a data story. The report should seamlessly connect the insights (nodes) and relationships (edges) from the insight tree.
 In the report, the 'query' represents the user's question or the aspect they want to explore further for a particular insight. The 'relationship' reflects the logical reasoning that led from a parent node to a child node as the next step in the exploration. The 'relType' indicates the structural relationship between two nodes, such as specification (a deeper exploration of a specific aspect), generalization (expanding to a broader context), or same-level (exploring another perspective within the same scope).
-The summary report should carefully weave together all the nodes and edges, including the user's queries and thoughts, into cohesive paragraphs. . This insight tree may represent the user's analysis of a specific problem from several perspectives (as subtrees). You should emphasize reasoning about the user's thought process and understand what kind of data story this insight tree expresses.
+The summary report should carefully weave together all the nodes and edges, including the user's queries and thoughts, into cohesive paragraphs. This insight tree may represent the user's analysis of a specific problem from several perspectives (as subtrees). You should emphasize reasoning about the user's thought process and understand what kind of data story this insight tree expresses.
 When writing this report, use a data storytelling narrative style. Begin with an introduction to the user's initial area of interest, then develop the exploration by narrating how each insight was derived, and conclude by highlighting the overall insights discovered. For example, "The user was initially interested in X, and they sought to explore the reasons behind X by investigating Y..."
 Ensure that the report is structured into well-formed paragraphs, avoiding lists or bullet points. Do not refer to the insights by their IDs in the report. Instead, use descriptive language to convey the insights and their relationships.
 """
@@ -220,7 +227,7 @@ Ensure that the report is structured into well-formed paragraphs, avoiding lists
 
     # let LLM label the report
     prompt_label = """
-You have generated a summary report that outlines a user's exploration journey through an insight tree, containing various insights and relationships. Now, the task is to enhance this report for interactive highlighting by embedding it with <span> tags. These tags will associate specific sentences or phrases in the report with corresponding nodes or edges in the insight tree. This allows the frontend to implement a feature where hovering over a report sentence highlights the associated elements in the insight tree.
+You have generated a summary report that outlines a user's exploration journey through an insight tree, containing various insights and relationships. Now, the task is to enhance this report for interactive highlighting by embedding it with html <span> tags. These tags will associate specific sentences or phrases in the report with corresponding nodes or edges in the insight tree. This allows the frontend to implement a feature where hovering over a report sentence highlights the associated elements in the insight tree.
 To achieve this, follow these guidelines:
 1. Identify Insight Nodes: For each sentence that describes or references a specific insight from the tree, wrap the entire sentence with a `<span>` tag and assign it a class using the format `<span class="insight-node-<id>">...</span>`, where `<id>` corresponds to the ID of the node in the insight tree.
 2. Highlight Relationships: For sentences that describe transitions or relationships between insights, wrap the entire sentence with a `<span>` tag using the format `<span class="insight-edge-<source>-<target>">...</span>`, where `<source>` and `<target>` are the IDs of the source and target nodes, respectively, in the insight tree.
@@ -230,10 +237,21 @@ To achieve this, follow these guidelines:
 Here’s an example of how the report text should be annotated:
 - Before: "The user observed a significant drop in Sony's sales, leading to further analysis."
 - After: "<span class="insight-node-70">The user observed a significant drop in Sony's sales.</span> <span class="insight-edge-70-71">This led to further analysis into the subsequent factors.</span>"
-Below is the report. Please annotate it according to the above guidelines and return the annotated report directly without any additional comments or text.
+
 """
 
-    question2 = prompt_label + response
+    repeat_tree = """
+I will repeat the insight tree below. 
+Note: Please use the correct id (use the id in the insight tree).
+
+    """
+
+    report_input = """
+Below is the report. Please annotate it according to the above guidelines and return the annotated report directly without any additional comments or text.
+
+    """
+
+    question2 = prompt_label + repeat_tree + tree_info + report_input + response
     final_report = get_response(question2)
 
     print(f"After labeling(The final report):\n {final_report}\n")
@@ -290,7 +308,7 @@ Please answer strictly according to the format and do not add additional marking
 
 
 # test
-
+#
 # insight_list = read_vis_list_into_insights('vis_list_VegaLite.txt')
 #
 # insight_id = 198
@@ -300,139 +318,21 @@ Please answer strictly according to the format and do not add additional marking
 # node_id = 0
 # item = insight_list[insight_id]
 # next_nodes = run(qa_LLM(query, item, insight_list, node_id))
-
+#
 # tree = """
-# {
-#     "nodes": [
-#         {
-#             "id": 1325,
-#             "type": "dominance",
-#             "description": "In Data scope (Sony,), The Sale of PlayStation 4 (PS4) dominates among all Brands.",
-#             "query": "Why are PS4 sales so high? Do other companies also have dominated brands?"
-#         },
-#         {
-#             "id": 2078,
-#             "type": "outlier-temporal",
-#             "description": "In Data scope (Microsoft, ), The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.",
-#             "query": "The sales of Microsoft are declining year by year. What is the reason? I noticed that unlike Sony and Nintendo, Microsoft does not have a dominant brand. Is this related to Microsoft's declining sales?"
-#         },
-#         {
-#             "id": 2081,
-#             "type": "dominance",
-#             "description": "In Data scope (Microsoft, ), The Sale of North America dominates among all Locations.",
-#             "query": "Q: The sales of Microsoft are declining year by year. What is the reason? Is it related to its competitors Sony and Nintendo?"
-#         },
-#         {
-#             "id": 14,
-#             "type": "top2",
-#             "description": "In Data scope (Nintendo, ), The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 2406,
-#             "type": "dominance",
-#             "description": "In Data scope (Microsoft, Xbox One(XOne)), The Sale of North America dominates among all Locations.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 2088,
-#             "type": "trend",
-#             "description": "In Data scope (Microsoft, X360), Sales exhibit a clear downward trend over the Years from 2013 to 2020.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 1322,
-#             "type": "compound",
-#             "description": "In Data scope (Sony,), The sale of Europe,Japan,North America,Other, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 2098,
-#             "type": "trend",
-#             "description": "In Data scope (Microsoft, Europe), Sales exhibit a clear downward trend over the Years from 2013 to 2020.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 2095,
-#             "type": "compound",
-#             "description": "In Data scope (Microsoft, Europe), The sale of 2016,2017,2018, are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.",
-#             "query": NULL
-#         },
-#         {
-#             "id": 2096,
-#             "type": "outlier-temporal",
-#             "description": "In Data scope (Microsoft, Europe), The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.",
-#             "query": NULL
-#         }
-#     ],
-#     "edges": [
-#         {
-#             "source": 1325,
-#             "target": 2078,
-#             "query": "Why are PS4 sales so high? Do other companies also have dominated brands?",
-#             "relationship": "Insight 11 identifies that the sale of the year 2014 is an outlier for Microsoft, significantly higher than other years. This is important for understanding anomalies in sales data, which can be compared to any anomalies in Nintendo's sales data. By identifying outliers, we can investigate the reasons behind these anomalies, which might include market conditions, product launches, or other factors. This insight helps us understand the temporal distribution of sales and identify any unusual patterns that could explain high sales figures.",
-#             "relType": "same-level"
-#         },
-#         {
-#             "source": 1325,
-#             "target": 2081,
-#             "query": "Why are PS4 sales so high? Do other companies also have dominated brands?",
-#             "relationship": "Insight 14 shows that the sale of North America dominates among all locations for Microsoft. This is relevant to the problem question as it provides a comparison point for regional dominance. By knowing that North America is a key market for Microsoft, we can compare this with Nintendo's regional sales to see if there are similar patterns of dominance. This insight helps us understand the geographical distribution of sales, which is crucial for comparing the performance of different companies.",
-#             "relType": "same-level"
-#         },
-#         {
-#             "source": 1325,
-#             "target": 14,
-#             "query": "Why are PS4 sales so high? Do other companies also have dominated brands?",
-#             "relationship": "Insight 14 shows that the sale of North America dominates among all locations for Microsoft. This is relevant to the problem question as it provides a comparison point for regional dominance. By knowing that North America is a key market for Microsoft, we can compare this with Nintendo's regional sales to see if there are similar patterns of dominance. This insight helps us understand the geographical distribution of sales, which is crucial for comparing the performance of different companies.",
-#             "relType": "same-level"
-#         },
-#         {
-#             "source": 2078,
-#             "target": 2406,
-#             "query": "The sales of Microsoft are declining year by year. What is the reason? I noticed that unlike Sony and Nintendo, Microsoft does not have a dominant brand. Is this related to Microsoft's declining sales?",
-#             "relationship": "Insight 10 shows that the sale of North America dominates among all locations for the Xbox One. This is relevant because it provides a geographical context to the sales data. Understanding that North America is the dominant market can lead to further investigation into market-specific factors that might be contributing to the decline in sales. For example, changes in consumer preferences, competition, or economic conditions in North America could be significant factors affecting Microsoft's overall sales performance.",
-#             "relType": "specification"
-#         },
-#         {
-#             "source": 2078,
-#             "target": 2088,
-#             "query": "The sales of Microsoft are declining year by year. What is the reason? I noticed that unlike Sony and Nintendo, Microsoft does not have a dominant brand. Is this related to Microsoft's declining sales?",
-#             "relationship": "Insight 6 reveals a clear downward trend in sales from 2013 to 2020 for the Xbox 360. This is directly relevant to the problem of declining sales for Microsoft, as it provides a temporal context and shows that the decline is not just a short-term anomaly but a long-term trend. This insight helps us understand the broader pattern of declining sales over the years, which is crucial for addressing the question of why Microsoft's sales are declining.",
-#             "relType": "specification"
-#         },
-#         {
-#             "source": 2081,
-#             "target": 1322,
-#             "query": "The sales of Microsoft are declining year by year. What is the reason? Is it related to its competitors Sony and Nintendo?",
-#             "relationship": "Insight 7 is selected because it mirrors Insight 1 but for Sony instead of Nintendo. This comparison is crucial for understanding the competitive landscape and how both companies' sales trends are correlated across different regions. By examining the same pattern in Sony's sales, we can infer whether the decline in Microsoft's sales might be influenced by similar market dynamics affecting both Nintendo and Sony.",
-#             "relType": "same-level"
-#         },
-#         {
-#             "source": 2081,
-#             "target": 2098,
-#             "query": "I want to explore the reasons for Microsoft's sales in location aspect.
-# ",
-#             "relationship": "Insight 1 shows a specific pattern for the years 2013 and 2020, but Insight 5 provides a broader context by indicating a clear downward trend in sales from 2013 to 2020. This helps in understanding the long-term trend and how the specific patterns observed in Insight 1 fit into the overall decline. This is important for problem relevance as it addresses the overarching question of why Microsoft's sales are changing over time in Europe.",
-#             "relType": "specification"
-#         },
-#         {
-#             "source": 2081,
-#             "target": 2095,
-#             "query": "I want to explore the reasons for Microsoft's sales in location aspect.
-# ",
-#             "relationship": "Insight 1 focuses on the years 2013 and 2020, while Insight 2 provides information on the sales patterns for 2016, 2017, and 2018, which are also correlated but show a different trend (decreasing fast from MAR to JUN and then increasing slowly). This comparison is valuable for data association, as it allows us to contrast different periods and understand how sales dynamics have shifted over different years, contributing to a comprehensive analysis of sales trends in Europe.",
-#             "relType": "specification"
-#         },
-#         {
-#             "source": 2081,
-#             "target": 2096,
-#             "query": "I want to explore the reasons for Microsoft's sales in location aspect.
-# ",
-#             "relationship": "Insight 1 indicates a pattern in sales for the years 2013 and 2020, with a peak in June and a subsequent decline. Insight 3 highlights that the sale of the year 2020 is an outlier, significantly lower than other years. This is a logical next step because understanding the outlier nature of 2020 can provide deeper insights into why the sales pattern deviated so drastically, which is crucial for identifying anomalies and their impact on overall sales trends.",
-#             "relType": "specification"
-#         }
-#     ]
+# {'nodes': [
+#     {'id': 265, 'type': 'outlier-temporal', 'description': 'The Sale of Year 2014 is an outlier, which is significantly higher than the normal Sale of other Years.', 'query': ''
+#     },
+#     {'id': 266, 'type': 'dominance', 'description': 'The Sale of PlayStation 4 (PS4) dominates among all Brands.', 'query': ''
+#     },
+#     {'id': 267, 'type': 'top2', 'description': 'The Sale proportion of Nintendo Switch (NS) and Nintendo 3DS (3DS) is significantly higher than that of other Brands.', 'query': ''
+#     }
+#   ], 'edges': [
+#     {'source': 265, 'target': 266, 'query': None, 'relationship': '', 'relType': ''
+#     },
+#     {'source': 265, 'target': 267, 'query': None, 'relationship': '', 'relType': ''
+#     }
+#   ]
 # }
 # """
 # summarize_LLM(tree)
