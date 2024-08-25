@@ -130,7 +130,10 @@ def read_vis_list(file_path):
 
 def get_completion_from_messages(messages, temperature):
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo-16k",
+        # model="chatgpt-4o-latest",
+        # model="gpt-4o",
+        # model="gpt-4",
         # model="gpt-3.5-turbo-0613",
         messages=messages,
         max_tokens=1024,
