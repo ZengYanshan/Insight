@@ -231,7 +231,7 @@ You have generated a summary report that outlines a user's exploration journey t
 To achieve this, follow these guidelines:
 1. Identify Insight Nodes: For each sentence that describes or references a specific insight from the tree, wrap the entire sentence with a `<span>` tag and assign it a class using the format `<span class="insight-node-<id>">...</span>`, where `<id>` corresponds to the ID of the node in the insight tree.
 2. Highlight Relationships: For sentences that describe transitions or relationships between insights, wrap the entire sentence with a `<span>` tag using the format `<span class="insight-edge-<source>-<target>">...</span>`, where `<source>` and `<target>` are the IDs of the source and target nodes, respectively, in the insight tree.
-3. Maintain Readability: Ensure that the addition of `<span>` tags does not disrupt the readability of the report. 
+3. The use of tags: Use as few `<span>` tags as possible. Use `<span>` tags to wrap as many sentences as possible, not words.
 4. Selective Tagging: Not every sentence needs to be tagged. Only tag sentences that clearly correspond to a node or relationship in the insight tree.
 5. Consistent Tagging: Ensure all insights and relationships mentioned in the report are tagged appropriately and consistently, providing comprehensive coverage for all nodes and edges in the insight tree.
 Here’s an example of how the report text should be annotated:
