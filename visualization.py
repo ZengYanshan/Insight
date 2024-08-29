@@ -103,7 +103,7 @@ table_structure = {
 
 color_scheme = {
 
-    'Company': {'Nintendo': '#a6d854', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#ffd92f'},
+    'Company': {'Nintendo': '#66c2a5', 'Sony': '#fc8d62', 'Microsoft': '#8da0cb', 'default': '#a6d854'},
 
     'Brand': {'Nintendo 3DS (3DS)': '#a6cee3', 'Nintendo DS (DS)': '#1f78b4', 'Nintendo Switch (NS)': '#b2df8a',
               'Wii (Wii)': '#33a02c', 'Wii U (WiiU)': '#fb9a99', 'PlayStation 3 (PS3)': '#e31a1c',
@@ -126,6 +126,13 @@ def find_column_name(d, table_structure):
         if str(first_value) in column_values:
             return column_name
     return None
+
+
+def set_legend(legend_field, d):
+    legend_labels = d[legend_field].unique()
+    total_length = sum(len(str(label)) for label in legend_labels)
+    columns_num = 3 if total_length <= 30 else 2
+    return columns_num
 
 
 def create_bar_chart(d):
@@ -163,7 +170,7 @@ def create_bar_chart(d):
         ]
     }
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding}
 
 
 def create_pie_chart_dominance(d):
@@ -244,7 +251,7 @@ def create_pie_chart_dominance(d):
             }
         }
     }
-    return {'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
 
 
 def create_pie_chart_top2(d):
@@ -327,7 +334,7 @@ def create_pie_chart_top2(d):
             }
         }
     }
-    return {'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
 
 
 def create_area_chart(d, color='#4682b4'):
@@ -397,7 +404,7 @@ def create_area_chart(d, color='#4682b4'):
         }]
     }
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding}
 
 
 # def create_scatter_plot(d):
@@ -472,6 +479,8 @@ def create_multi_line_chart(d):
     # else:
     #     legend_columns = 3
 
+    columns_num = set_legend(d.columns[1], d)
+
     mark = {'type': 'line', 'interpolate': 'monotone'}
     encoding = {
         'x': {
@@ -493,7 +502,7 @@ def create_multi_line_chart(d):
             'type': 'nominal',
             'legend': {
                 'orient': 'bottom',
-                'columns': 3
+                'columns': columns_num
                 # 'titleFontSize': 10,
                 # 'labelFontSize': 8
             },
@@ -512,7 +521,15 @@ def create_multi_line_chart(d):
         }]
     }
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    config = {
+        'legend': {
+            'layout': {
+                'anchor': 'middle',  # 设置图例居中
+                'padding': 10
+            }
+        }
+    }
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding, 'config': config}
 
 
 def create_box_plot(d):
@@ -553,7 +570,7 @@ def create_box_plot(d):
         }]
     }
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding}
 
 
 def create_box_and_bar_plot(d):
@@ -633,7 +650,7 @@ def create_box_and_bar_plot(d):
         "encoding": bar_encoding
     }]
     data = {'values': values}
-    return {'data': data, "spacing": 15, "bounds": "flush", 'vconcat': vconcat}
+    return {'width': 200, 'height': 150, 'data': data, "spacing": 15, "bounds": "flush", 'vconcat': vconcat}
 
 
 def create_density_plot(d):
@@ -679,7 +696,7 @@ def create_density_plot(d):
         }
     }
     data = {'values': values}
-    return {
+    return {'width': 200, 'height': 150,
         'data': data,
         'transform': transform,
         'mark': mark,
@@ -730,7 +747,7 @@ def create_density_plot_color(d):
         }
     }
     data = {'values': values}
-    return {
+    return {'width': 200, 'height': 150,
         'data': data,
         'transform': transform,
         'mark': mark,
@@ -783,7 +800,7 @@ def create_trail_plot(d):
         }]
     }
     data = {'values': values}
-    return {'data': data, 'mark': mark, 'encoding': encoding}
+    return {'width': 200, 'height': 150, 'data': data, 'mark': mark, 'encoding': encoding}
 
 
 def get_visualization(insight_list):

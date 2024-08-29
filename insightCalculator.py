@@ -63,7 +63,7 @@ def calc_outlier(d):
             for outlier in outliers:
                 index = np.where(sorted_values == outlier)[0]
                 if outlier < lower_threshold:
-                    ins_score = (outlier -
+                    ins_score = (sorted_values[index] -
                                  sorted_values.mean()) / sorted_values.std()
                     ins_score = -ins_score
                     # ins_score = min(ins_score, 3)  # Cap at 3
@@ -73,6 +73,7 @@ def calc_outlier(d):
                     ins_score = (ins_score - min_score) / (
                         max_score - min_score)  # Normalize
                     ins_score = max(0, min(1, ins_score))
+                    ins_score = float(ins_score)
                     description = generate_outlier_description(
                         sorted_d, index, 'lower')
                     insights.append({
@@ -81,13 +82,14 @@ def calc_outlier(d):
                         "ins_description": description
                     })
                 elif outlier > upper_threshold:
-                    ins_score = (outlier -
+                    ins_score = (sorted_values[index] -
                                  sorted_values.mean()) / sorted_values.std()
                     min_score = 0.6
                     max_score = 3.7
                     ins_score = (ins_score - min_score) / (
                         max_score - min_score)  # Normalize
                     ins_score = max(0, min(1, ins_score))
+                    ins_score = float(ins_score)
                     description = generate_outlier_description(
                         sorted_d, index, 'higher')
                     insights.append({
@@ -127,7 +129,7 @@ def calc_outlier_temporal(d):
             for outlier in outliers:
                 index = np.where(sorted_values == outlier)[0]
                 if outlier < lower_threshold:
-                    ins_score = (sorted_values[-1] -
+                    ins_score = (sorted_values[index] -
                                  sorted_values.mean()) / sorted_values.std()
                     ins_score = -ins_score
                     # ins_score = min(ins_score, 3)  # Cap at 3
@@ -135,8 +137,9 @@ def calc_outlier_temporal(d):
                     min_score = 0.6
                     max_score = 3.7
                     ins_score = (ins_score - min_score) / (
-                        max_score - min_score)  # Normalize
+                            max_score - min_score)  # Normalize
                     ins_score = max(0, min(1, ins_score))
+                    ins_score = float(ins_score)
                     description = generate_outlier_description(
                         sorted_d, index, 'lower')
                     insights.append({
@@ -145,13 +148,14 @@ def calc_outlier_temporal(d):
                         "ins_description": description
                     })
                 elif outlier > upper_threshold:
-                    ins_score = (sorted_values[0] -
+                    ins_score = (sorted_values[index] -
                                  sorted_values.mean()) / sorted_values.std()
                     min_score = 0.6
                     max_score = 3.7
                     ins_score = (ins_score - min_score) / (
                         max_score - min_score)  # Normalize
                     ins_score = max(0, min(1, ins_score))
+                    ins_score = float(ins_score)
                     description = generate_outlier_description(
                         sorted_d, index, 'higher')
                     insights.append({

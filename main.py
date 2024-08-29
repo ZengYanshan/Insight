@@ -72,21 +72,22 @@ def get_graph_data():
     # global insights of source table
     insights_info = get_insight_vega_by_header("()", insight_list)
     for item in insights_info:
-        node_id += 1
-        node = {
-            "id": node_id,
-            "realId": item['realId'],
-            "type": item['type'],
-            "category": item['category'],
-            "vegaLite": item['vegaLite']
-        }
-        nodes.append(node)
+        if not item['category'] == "compound":
+            node_id += 1
+            node = {
+                "id": node_id,
+                "realId": item['realId'],
+                "type": item['type'],
+                "category": item['category'],
+                "vegaLite": item['vegaLite']
+            }
+            nodes.append(node)
 
     # insights with the highest score
     k = 50
     insights_info = get_top_k_insights(k, insight_list)
 
-    random_selection = random.sample(insights_info, 5)
+    random_selection = random.sample(insights_info, 6)
     for item in random_selection:
         if not any(node['realId'] == item['realId'] for node in nodes):
             node_id += 1
@@ -259,8 +260,6 @@ def create_table(name, path, req_id):
 if __name__ == '__main__':
     global node_id
     node_id = 0
-
-    file_path = 'vis_list.txt'
     insight_list = read_vis_list_into_insights('vis_list_VegaLite.txt')
 
     app.run(debug=False, port=5000)

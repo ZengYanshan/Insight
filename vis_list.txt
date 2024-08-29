@@ -14,27 +14,27 @@ Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SE
 
 Insight3: 
 Type: correlation-temporal
+Score: 0.9281542660798066
+Category: compound
+Description: The sale of Nintendo 3DS (3DS),Wii (Wii),Wii U (WiiU),PlayStation 4 (PS4),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight4: 
+Type: correlation-temporal
 Score: 0.9044727874859976
 Category: compound
 Description: The sale of PlayStation 3 (PS3),Xbox 360 (X360), are correlated. From 2013 to 2018, values decreased fast, with a Minimum value in 2018. From 2018 to 2019, values increased slowly, with a Maximum value in 2019. From 2019 to 2020, values decreased slowly.
 
-Insight4: 
+Insight5: 
 Type: correlation-temporal
 Score: 0.8926611406724156
 Category: compound
 Description: The sale of 2014,2015,2016,2017,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
-Insight5: 
+Insight6: 
 Type: correlation-temporal
 Score: 0.8693835008030563
 Category: compound
 Description: The sale of Wii U (WiiU),PlayStation Vita (PSV), are correlated. From 2013 to 2015, values increased fast, with a Maximum value in 2015. From 2015 to 2020, values decreased fast.
-
-Insight6: 
-Type: correlation-temporal
-Score: 0.8662406217860654
-Category: compound
-Description: The sale of Nintendo 3DS (3DS),Nintendo DS (DS),Nintendo Switch (NS),Wii (Wii),Wii U (WiiU),PlayStation 4 (PS4),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight7: 
 Type: evenness
@@ -190,21 +190,21 @@ Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SE
 
 Insight3: 
 Type: correlation-temporal
+Score: 0.9460075521367237
+Category: compound
+Description: The sale of Nintendo 3DS (3DS),PlayStation 4 (PS4),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight4: 
+Type: correlation-temporal
 Score: 0.9437389265044714
 Category: compound
 Description: The sale of 2014,2015,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
-Insight4: 
+Insight5: 
 Type: correlation-temporal
 Score: 0.9282959252455493
 Category: compound
 Description: The sale of Wii (Wii),PlayStation 3 (PS3),Xbox 360 (X360), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
-
-Insight5: 
-Type: correlation-temporal
-Score: 0.9184035172578205
-Category: compound
-Description: The sale of Nintendo 3DS (3DS),Nintendo Switch (NS),PlayStation 4 (PS4),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight6: 
 Type: evenness
@@ -554,9 +554,9 @@ Description: The sale of Europe,Japan,North America, are correlated. From MAR to
 
 Insight4: 
 Type: correlation-temporal
-Score: 0.865899149703983
+Score: 0.9046492749298234
 Category: compound
-Description: The sale of Nintendo 3DS (3DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3),PlayStation Vita (PSV), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Nintendo 3DS (3DS),Wii (Wii),PlayStation 3 (PS3),PlayStation Vita (PSV), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight5: 
 Type: top2
@@ -765,12 +765,6 @@ Category: compound
 Description: The sale of Europe,Japan,North America,Other, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight2: 
-Type: correlation-temporal
-Score: 0.8529516593793305
-Category: compound
-Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
-
-Insight3: 
 Type: dominance
 Score: 0.42682926829268286
 Category: point
@@ -952,9 +946,9 @@ Description: The Sale of MAR dominates among all Seasons.
 Header: ('2016', 'Europe')
 Insight1: 
 Type: correlation-temporal
-Score: 0.8641167926280827
+Score: 0.9008604014283828
 Category: compound
-Description: The sale of Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),Xbox 360 (X360), are correlated. From MAR to DEC, values decreased fast.
 
 Insight2: 
 Type: skewness
@@ -1058,15 +1052,15 @@ Description: The Sale of PlayStation 4 (PS4) dominates among all Brands.
 Header: ('2017',)
 Insight1: 
 Type: correlation-temporal
-Score: 0.9291493974984366
+Score: 0.9504122892500467
 Category: compound
-Description: The sale of Sony,Microsoft, are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
+Description: The sale of Wii U (WiiU),PlayStation 3 (PS3),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight2: 
 Type: correlation-temporal
-Score: 0.8992526545124093
+Score: 0.9291493974984366
 Category: compound
-Description: The sale of Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
+Description: The sale of Sony,Microsoft, are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
 
 Insight3: 
 Type: correlation-temporal
@@ -3475,18 +3469,24 @@ Category: compound
 Description: The sale of Wii U (WiiU),PlayStation Vita (PSV), are correlated. From 2013 to 2014, values increased fast, with a Maximum value in 2014. From 2014 to 2020, values decreased fast.
 
 Insight5: 
+Type: correlation-temporal
+Score: 0.8602812755997149
+Category: compound
+Description: The sale of Wii (Wii),PlayStation 3 (PS3), are correlated. From MAR to DEC, values decreased fast.
+
+Insight6: 
 Type: evenness
 Score: 0.7386265774556682
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
-Insight6: 
+Insight7: 
 Type: skewness
 Score: 0.08761448618685781
 Category: shape
 Description: The Sale has a positively skewed distribution, which means that there are more extreme Sale values on the right side, and the distribution is skewed to the right.
 
-Insight7: 
+Insight8: 
 Type: top2
 Score: 0.0666471506635441
 Category: point
@@ -4580,15 +4580,15 @@ Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SE
 
 Insight3: 
 Type: correlation-temporal
-Score: 0.9504834349122046
+Score: 0.9583641864681962
 Category: compound
-Description: The sale of PlayStation 4 (PS4),Xbox One (XOne),are correlated.The data shows a oscillatory upward trend.
+Description: The sale of Nintendo 3DS (3DS),Nintendo DS (DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight4: 
 Type: correlation-temporal
-Score: 0.9294019627123643
+Score: 0.9504834349122046
 Category: compound
-Description: The sale of Nintendo 3DS (3DS),Nintendo DS (DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of PlayStation 4 (PS4),Xbox One (XOne),are correlated.The data shows a oscillatory upward trend.
 
 Insight5: 
 Type: correlation-temporal
@@ -4650,9 +4650,9 @@ Description: The Sales are relatively evenly distributed across different Years.
 Header: ('Nintendo', 'Nintendo 3DS (3DS)', 'North America')
 Insight1: 
 Type: correlation-temporal
-Score: 0.8997316848772346
+Score: 0.9104718585756966
 Category: compound
-Description: The sale of 2014,2015,2016,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of 2014,2015,2018, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight2: 
 Type: trend
@@ -4676,9 +4676,9 @@ Description: The Sale of MAR dominates among all Seasons.
 Header: ('Nintendo 3DS (3DS)', 'North America')
 Insight1: 
 Type: correlation-temporal
-Score: 0.8997316848772346
+Score: 0.9104718585756966
 Category: compound
-Description: The sale of 2014,2015,2016,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of 2014,2015,2018, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight2: 
 Type: trend
@@ -4716,23 +4716,29 @@ Description: The Sale proportion of Nintendo and Sony is significantly higher th
 Header: ('2013', 'North America')
 Insight1: 
 Type: correlation-temporal
+Score: 0.9775222279323217
+Category: compound
+Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU), are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
+
+Insight2: 
+Type: correlation-temporal
+Score: 0.955457432462647
+Category: compound
+Description: The sale of Nintendo DS (DS),Wii (Wii),PlayStation 3 (PS3), are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
+Type: correlation-temporal
 Score: 0.9421932890526249
 Category: compound
 Description: The sale of Nintendo,Sony, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
-Insight2: 
-Type: correlation-temporal
-Score: 0.8751747983958591
-Category: compound
-Description: The sale of Nintendo DS (DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3), are correlated. From MAR to DEC, values decreased fast.
-
-Insight3: 
+Insight4: 
 Type: top2
 Score: 0.48627450980392173
 Category: point
 Description: The Sale proportion of Nintendo and Microsoft is significantly higher than that of other Companys.
 
-Insight4: 
+Insight5: 
 Type: trend
 Score: 0.14362575864676558
 Category: shape
@@ -4761,6 +4767,18 @@ Description: The Sales are relatively evenly distributed across different Years.
 ====================================================================================================
 Header: ('2013', 'Nintendo', 'North America')
 Insight1: 
+Type: correlation-temporal
+Score: 0.9775222279323217
+Category: compound
+Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU), are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
+
+Insight2: 
+Type: correlation-temporal
+Score: 0.9610772102697628
+Category: compound
+Description: The sale of Nintendo DS (DS),Wii (Wii), are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
 Type: dominance
 Score: 0.12399355877616758
 Category: point
@@ -4808,9 +4826,9 @@ Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to JU
 
 Insight2: 
 Type: correlation-temporal
-Score: 0.8627038330938894
+Score: 0.925844470479554
 Category: compound
-Description: The sale of Nintendo 3DS (3DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Nintendo 3DS (3DS),Wii (Wii),Wii U (WiiU),PlayStation 3 (PS3),PlayStation Vita (PSV), are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to DEC, values increased slowly.
 
 Insight3: 
 Type: top2
@@ -4886,9 +4904,9 @@ Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SE
 
 Insight2: 
 Type: correlation-temporal
-Score: 0.891717174223929
+Score: 0.9426094782480021
 Category: compound
-Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU),PlayStation 3 (PS3),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU),PlayStation 3 (PS3),PlayStation Vita (PSV),Xbox 360 (X360), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight3: 
 Type: top2
@@ -4964,15 +4982,15 @@ Description: The Sale proportion of Nintendo 3DS (3DS) and Wii U (WiiU) is signi
 Header: ('2016', 'North America')
 Insight1: 
 Type: correlation-temporal
-Score: 0.9419660262593084
+Score: 0.9466356535563659
 Category: compound
-Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight2: 
 Type: correlation-temporal
-Score: 0.9115653110928228
+Score: 0.9419660262593084
 Category: compound
-Description: The sale of Nintendo 3DS (3DS),Wii U (WiiU),PlayStation 3 (PS3),PlayStation 4 (PS4),PlayStation Vita (PSV),Xbox 360 (X360),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+Description: The sale of Nintendo,Sony,Microsoft, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight3: 
 Type: top2
@@ -5845,30 +5863,24 @@ Category: compound
 Description: The sale of Nintendo Switch (NS),PlayStation 4 (PS4),Xbox One (XOne), are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight5: 
-Type: correlation-temporal
-Score: 0.8549523232159948
-Category: compound
-Description: The sale of Nintendo,Sony, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
-
-Insight6: 
 Type: evenness
 Score: 0.7307088977460361
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
-Insight7: 
+Insight6: 
 Type: outlier
 Score: 0.6673704414610783
 Category: point
 Description: The Sale of Brand PlayStation 4 (PS4) of Year all Years is an outlier, which is significantly higher than the normal Sale of other Brands in the corresponding Years.
 
-Insight8: 
+Insight7: 
 Type: kurtosis
 Score: 0.6272229516561219
 Category: shape
 Description: The Sale exhibit leptokurtic behavior with heavy tails and a sharp peak, indicating a distribution with positive kurtosis.
 
-Insight9: 
+Insight8: 
 Type: dominance
 Score: 0.12280701754385959
 Category: point
@@ -5921,18 +5933,12 @@ Description: The Sale has a positively skewed distribution, which means that the
 ====================================================================================================
 Header: ('Nintendo', 'Nintendo 3DS (3DS)', 'Other')
 Insight1: 
-Type: correlation-temporal
-Score: 0.8529265251944554
-Category: compound
-Description: The sale of 2015,2018, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
-
-Insight2: 
 Type: dominance
 Score: 0.12587412587412583
 Category: point
 Description: The Sale of MAR dominates among all Seasons.
 
-Insight3: 
+Insight2: 
 Type: trend
 Score: 0.002221377146815658
 Category: shape
@@ -5941,18 +5947,12 @@ Description: Sales exhibit a clear downward trend over the Years from 2013 to 20
 ====================================================================================================
 Header: ('Nintendo 3DS (3DS)', 'Other')
 Insight1: 
-Type: correlation-temporal
-Score: 0.8529265251944554
-Category: compound
-Description: The sale of 2015,2018, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
-
-Insight2: 
 Type: dominance
 Score: 0.12587412587412583
 Category: point
 Description: The Sale of MAR dominates among all Seasons.
 
-Insight3: 
+Insight2: 
 Type: trend
 Score: 0.002221377146815658
 Category: shape
@@ -8340,9 +8340,9 @@ Description: The sale of Europe,Japan,North America,Other, are correlated. From 
 
 Insight4: 
 Type: correlation-temporal
-Score: 0.8750307038086904
+Score: 0.9240948321796196
 Category: compound
-Description: The sale of 2013,2014,2015,2016,2017, are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to SEP, values increased slowly, with a Maximum value in SEP. From SEP to DEC, values decreased slowly.
+Description: The sale of 2013,2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight5: 
 Type: trend
@@ -8384,9 +8384,9 @@ Description: The sale of Europe,Japan,North America,Other, are correlated. From 
 
 Insight4: 
 Type: correlation-temporal
-Score: 0.8750307038086904
+Score: 0.9240948321796196
 Category: compound
-Description: The sale of 2013,2014,2015,2016,2017, are correlated. From MAR to JUN, values decreased fast, with a Minimum value in JUN. From JUN to SEP, values increased slowly, with a Maximum value in SEP. From SEP to DEC, values decreased slowly.
+Description: The sale of 2013,2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight5: 
 Type: trend
@@ -9290,21 +9290,21 @@ Description: The Sale has a positively skewed distribution, which means that the
 Header: ('PlayStation 3 (PS3)', 'Sony')
 Insight1: 
 Type: correlation-temporal
+Score: 0.9619118060689402
+Category: compound
+Description: The sale of 2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight2: 
+Type: correlation-temporal
 Score: 0.9187255092512295
 Category: compound
 Description: The sale of Japan,North America, are correlated. From MAR to DEC, values decreased fast.
 
-Insight2: 
+Insight3: 
 Type: correlation-temporal
 Score: 0.8913683134879072
 Category: compound
 Description: The sale of Europe,Japan,North America,Other, are correlated. From 2013 to 2018, values decreased fast, with a Minimum value in 2018. From 2018 to 2019, values increased slowly, with a Maximum value in 2019. From 2019 to 2020, values decreased slowly.
-
-Insight3: 
-Type: correlation-temporal
-Score: 0.8860496354655903
-Category: compound
-Description: The sale of 2014,2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight4: 
 Type: correlation-temporal
@@ -9340,21 +9340,21 @@ Description: The Sale of 2013 dominates among all Years.
 Header: ('PlayStation 3 (PS3)',)
 Insight1: 
 Type: correlation-temporal
+Score: 0.9619118060689402
+Category: compound
+Description: The sale of 2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight2: 
+Type: correlation-temporal
 Score: 0.9187255092512295
 Category: compound
 Description: The sale of Japan,North America, are correlated. From MAR to DEC, values decreased fast.
 
-Insight2: 
+Insight3: 
 Type: correlation-temporal
 Score: 0.8913683134879072
 Category: compound
 Description: The sale of Europe,Japan,North America,Other, are correlated. From 2013 to 2018, values decreased fast, with a Minimum value in 2018. From 2018 to 2019, values increased slowly, with a Maximum value in 2019. From 2019 to 2020, values decreased slowly.
-
-Insight3: 
-Type: correlation-temporal
-Score: 0.8860496354655903
-Category: compound
-Description: The sale of 2014,2015,2016,2017, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight4: 
 Type: correlation-temporal
@@ -9404,13 +9404,13 @@ Insight4:
 Type: outlier-temporal
 Score: 0.37339941502867857
 Category: point
-Description: The Sale of Year 2013 is an outlier, which is significantly lower than the normal Sale of other Years.
+Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
 
 Insight5: 
 Type: outlier-temporal
-Score: 0.37339941502867857
+Score: 0.31688125406913187
 Category: point
-Description: The Sale of Year 2020 is an outlier, which is significantly lower than the normal Sale of other Years.
+Description: The Sale of Year 2013 is an outlier, which is significantly lower than the normal Sale of other Years.
 
 ====================================================================================================
 Header: ('DEC', 'Sony')
@@ -10043,12 +10043,18 @@ Category: shape
 Description: Sales exhibit a clear downward trend over the Seasons from MAR to DEC.
 
 Insight2: 
+Type: correlation-temporal
+Score: 0.8565029506748031
+Category: compound
+Description: The sale of Japan,North America,Other, are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
 Type: top2
 Score: 0.5177335640138409
 Category: point
 Description: The Sale proportion of Europe and North America is significantly higher than that of other Locations.
 
-Insight3: 
+Insight4: 
 Type: top2
 Score: 0.3144463667820069
 Category: point
@@ -10789,18 +10795,24 @@ Category: compound
 Description: The sale of PlayStation 3 (PS3),PlayStation Vita (PSV), are correlated. From MAR to DEC, values decreased fast.
 
 Insight2: 
+Type: correlation-temporal
+Score: 0.8750869391989716
+Category: compound
+Description: The sale of 2014,2016,2018,2019, are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
 Type: top2
 Score: 0.7283638660770688
 Category: point
 Description: The Sale proportion of PlayStation 4 (PS4) and PlayStation Vita (PSV) is significantly higher than that of other Brands.
 
-Insight3: 
+Insight4: 
 Type: evenness
 Score: 0.366744778372198
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
-Insight4: 
+Insight5: 
 Type: trend
 Score: 0.08500896911124359
 Category: shape
@@ -12623,12 +12635,18 @@ Category: shape
 Description: Sales exhibit a clear downward trend over the Seasons from MAR to DEC.
 
 Insight2: 
+Type: correlation-temporal
+Score: 0.8565029506748031
+Category: compound
+Description: The sale of Japan,North America,Other, are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
 Type: top2
 Score: 0.5177335640138409
 Category: point
 Description: The Sale proportion of Europe and North America is significantly higher than that of other Locations.
 
-Insight3: 
+Insight4: 
 Type: top2
 Score: 0.3144463667820069
 Category: point
@@ -12643,12 +12661,18 @@ Category: shape
 Description: Sales exhibit a clear downward trend over the Seasons from MAR to DEC.
 
 Insight2: 
+Type: correlation-temporal
+Score: 0.8565029506748031
+Category: compound
+Description: The sale of Japan,North America,Other, are correlated. From MAR to DEC, values decreased fast.
+
+Insight3: 
 Type: top2
 Score: 0.5177335640138409
 Category: point
 Description: The Sale proportion of Europe and North America is significantly higher than that of other Locations.
 
-Insight3: 
+Insight4: 
 Type: top2
 Score: 0.3144463667820069
 Category: point
@@ -17035,24 +17059,30 @@ Category: compound
 Description: The sale of 2015,2016,2017,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight3: 
+Type: correlation-temporal
+Score: 0.8672229897169085
+Category: compound
+Description: The sale of Europe,Japan,Other, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight4: 
 Type: evenness
 Score: 0.5316073317760821
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
-Insight4: 
+Insight5: 
 Type: dominance
 Score: 0.29794238683127583
 Category: point
 Description: The Sale of North America dominates among all Locations.
 
-Insight5: 
+Insight6: 
 Type: skewness
 Score: 0.15226650407036732
 Category: shape
 Description: The Sale has a positively skewed distribution, which means that there are more extreme Sale values on the right side, and the distribution is skewed to the right.
 
-Insight6: 
+Insight7: 
 Type: dominance
 Score: 0.07242798353909463
 Category: point
@@ -17073,18 +17103,24 @@ Category: compound
 Description: The sale of 2015,2016,2017,2018,2019, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
 
 Insight3: 
+Type: correlation-temporal
+Score: 0.8672229897169085
+Category: compound
+Description: The sale of Europe,Japan,Other, are correlated. From MAR to SEP, values decreased fast, with a Minimum value in SEP. From SEP to DEC, values increased slowly.
+
+Insight4: 
 Type: evenness
 Score: 0.5316073317760821
 Category: shape
 Description: The Sales are relatively evenly distributed across different Years.
 
-Insight4: 
+Insight5: 
 Type: dominance
 Score: 0.29794238683127583
 Category: point
 Description: The Sale of North America dominates among all Locations.
 
-Insight5: 
+Insight6: 
 Type: dominance
 Score: 0.07242798353909463
 Category: point

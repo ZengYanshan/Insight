@@ -643,6 +643,8 @@ def save_insight(header,
                  aggregate=None):
     global subspace_insight
 
+    if ins_score == 0.18965517241379315:
+        print("HERE")
     # avoid duplicate headers caused by different orders
     sorted_header = tuple(sorted(map(str, header)))
     if sorted_header == ('(', ')'):
