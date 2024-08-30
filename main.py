@@ -57,6 +57,7 @@ def upload_table():
 @app.route('/graph/data', methods=['GET'])
 @cross_origin()
 def get_graph_data():
+    print("'/graph/data'\n")
     columnInfo = {
         "Company": ["*", "Nintendo", "Sony", "Microsoft"],
         "Brand": ["*", "Nintendo 3DS (3DS)", "Nintendo DS (DS)", "Nintendo Switch (NS)", "Wii (Wii)", "Wii U (WiiU)", "PlayStation 3 (PS3)", "PlayStation 4 (PS4)", "PlayStation Vita (PSV)", "Xbox 360 (X360)", "Xbox One (XOne)"],
@@ -108,6 +109,7 @@ def get_graph_data():
             "nodes": nodes
         }
     }
+    print(response)
     return jsonify(response)
 
 
@@ -258,10 +260,15 @@ def create_table(name, path, req_id):
     return jsonify(result)
 
 if __name__ == '__main__':
+    print("start")
     global node_id
     node_id = 0
+
+    file_path = 'vis_list.txt'
     insight_list = read_vis_list_into_insights('vis_list_VegaLite.txt')
+    print("done")
 
     app.run(debug=False, port=5000)
+
 
 

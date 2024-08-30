@@ -193,7 +193,7 @@ async def summarize_LLM(tree):
 # def summarize_LLM(tree):
     print("=====summarize_LLM=====")
     prompt1 = """
-You are given a data structure called an "insight tree," which consists of nodes and edges. Each node represents a data insight, and each edge describes the relationship between these insights. Your task is to generate a summary report that reflects the user's exploration journey through this insight tree.
+You are given a data structure called an "insight tree," which consists of nodes and edges. Each node represents a data insight, and each edge describes the relationship between these insights. Your task is to generate a summary report that reflects **the user's exploration journey** through this insight tree.
 Here is the insight tree:
 Nodes:
 - Each node has an `id`, a `type` that indicates the kind of insight (such as trend, outliers), a `description` that explains the data pattern of insight.
@@ -215,7 +215,7 @@ Below is the JSON structure representing the insight tree:
 Please note the following points:  
 The purpose of this summary report is to help the user automatically summarize their exploration process and findings, effectively creating a data story. The report should seamlessly connect the insights (nodes) and relationships (edges) from the insight tree.
 In the report, the 'query' represents the user's question or the aspect they want to explore further for a particular insight. The 'relationship' reflects the logical reasoning that led from a parent node to a child node as the next step in the exploration. The 'relType' indicates the structural relationship between two nodes, such as specification (a deeper exploration of a specific aspect), generalization (expanding to a broader context), or same-level (exploring another perspective within the same scope).
-The summary report should carefully weave together all the nodes and edges, including the user's queries and thoughts, into cohesive paragraphs. This insight tree may represent the user's analysis of a specific problem from several perspectives (as subtrees). You should emphasize reasoning about the user's thought process and understand what kind of data story this insight tree expresses.
+The summary report should carefully weave together all the nodes, including the user's queries and thoughts, into cohesive paragraphs. This insight tree may represent the user's analysis of a specific problem from several perspectives (as subtrees). You should emphasize reasoning about the user's thought process and understand what kind of data story this insight tree expresses.
 When writing this report, use a data storytelling narrative style. Begin with an introduction to the user's initial area of interest, then develop the exploration by narrating how each insight was derived, and conclude by highlighting the overall insights discovered. For example, "The user was initially interested in X, and they sought to explore the reasons behind X by investigating Y..."
 Ensure that the report is structured into well-formed paragraphs, avoiding lists or bullet points. Do not refer to the insights by their IDs in the report. Instead, use descriptive language to convey the insights and their relationships.
 """
@@ -227,16 +227,15 @@ Ensure that the report is structured into well-formed paragraphs, avoiding lists
 
     # let LLM label the report
     prompt_label = """
-You have generated a summary report that outlines a user's exploration journey through an insight tree, containing various insights and relationships. Now, the task is to enhance this report for interactive highlighting by embedding it with html <span> tags. These tags will associate specific sentences or phrases in the report with corresponding nodes or edges in the insight tree. This allows the frontend to implement a feature where hovering over a report sentence highlights the associated elements in the insight tree.
+You have generated a summary report that outlines a user's exploration journey through an insight tree. Now, the task is to enhance this report for interactive highlighting by embedding it with html <span> tags. These tags will associate specific sentences or phrases in the report with corresponding nodes in the insight tree. This allows the frontend to implement a feature where hovering over a report sentence highlights the associated elements in the insight tree.
 To achieve this, follow these guidelines:
-1. Identify Insight Nodes: For each sentence that describes or references a specific insight from the tree, wrap the entire sentence with a `<span>` tag and assign it a class using the format `<span class="insight-node-<id>">...</span>`, where `<id>` corresponds to the ID of the node in the insight tree.
-2. Highlight Relationships: For sentences that describe transitions or relationships between insights, wrap the entire sentence with a `<span>` tag using the format `<span class="insight-edge-<source>-<target>">...</span>`, where `<source>` and `<target>` are the IDs of the source and target nodes, respectively, in the insight tree.
-3. The use of tags: Use as few `<span>` tags as possible. Use `<span>` tags to wrap as many sentences as possible, not words.
-4. Selective Tagging: Not every sentence needs to be tagged. Only tag sentences that clearly correspond to a node or relationship in the insight tree.
-5. Consistent Tagging: Ensure all insights and relationships mentioned in the report are tagged appropriately and consistently, providing comprehensive coverage for all nodes and edges in the insight tree.
+1. Identify Insight Nodes: For each sentence that describes or references a specific insight from the tree, wrap the **entire sentence** with a `<span>` tag and assign it a class using the format `<span class="insight-node-<id>">...</span>`, where `<id>` corresponds to the ID of the node in the insight tree.
+2. The use of tags: Use as few `<span>` tags as possible. Use `<span>` tags to wrap as many sentences as possible, not words.
+3. Selective Tagging: Not every sentence needs to be tagged. Only tag sentences that clearly correspond to a node in the insight tree.
+4. Consistent Tagging: Ensure all insights and relationships mentioned in the report are tagged appropriately and consistently, providing comprehensive coverage for all nodes in the insight tree.
 Here’s an example of how the report text should be annotated:
 - Before: "The user observed a significant drop in Sony's sales, leading to further analysis."
-- After: "<span class="insight-node-70">The user observed a significant drop in Sony's sales.</span> <span class="insight-edge-70-71">This led to further analysis into the subsequent factors.</span>"
+- After: "<span class="insight-node-70">The user observed a significant drop in Sony's sales. This led to further analysis into the subsequent factors.</span>"
 
 """
 
