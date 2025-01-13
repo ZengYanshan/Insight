@@ -1,11 +1,30 @@
+# 提取 insight ，包括类型、得分、描述
+
+BASE_DIR = r"D:\projects\nvBench"
+DATASET_DIR = BASE_DIR + r"\dataset_nvBench"
+GROUND_TRUTH_DIR = DATASET_DIR + r"\ground_truth"
+CSV_DIR = DATASET_DIR + r"\csv"
+VEGA_LITE_DIR = DATASET_DIR + r"\vega_lite"
+
+import json
 import os
 
 import numpy as np
 import pandas as pd
 from scipy.stats import linregress, pearsonr, skewtest, kurtosistest, skew, kurtosis, zscore, kstest
 
+def preprocess(sorted_values):
+    # 尝试将 sorted_values 转换为数值类型，无法转换的值将被设置为 NaN
+    numeric_values = pd.to_numeric(sorted_values, errors='coerce')
+    # 将日期字符串转换为时间戳
+    date_values = pd.to_datetime(sorted_values, errors='coerce').astype(np.int64) // 10 ** 9
+    # 合并数值和时间戳，优先使用数值
+    sorted_values = np.where(np.isnan(numeric_values), date_values, numeric_values)
+    # 移除 NaN 值
+    sorted_values = sorted_values[~np.isnan(sorted_values)]
+    return sorted_values
 
-def calc_point_insight(d, no_aggr):
+def calc_point_insight(d, no_aggr=None):
     ins_type = ''
     ins_score = 0
     description = ""
@@ -14,6 +33,8 @@ def calc_point_insight(d, no_aggr):
     sorted_d = d.sort_values(by=d.columns[-1], ascending=False)
     # the value column
     sorted_values = sorted_d.iloc[:, -1].values
+
+    sorted_values = preprocess(sorted_values)
 
     # if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(sorted_values) == 0 or no_aggr:
     if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(
@@ -48,62 +69,72 @@ def calc_outlier(d):
     description = ""
     insights = []
 
+    # 按照最后一列的值降序排序数据
     sorted_d = d.sort_values(by=d.columns[-1], ascending=False)
     sorted_values = sorted_d.iloc[:, -1].values
 
-    if len(sorted_values) < 8 or np.sum(sorted_values) == 0 or np.std(
+    sorted_values = preprocess(sorted_values)
+
+    # 如果数据量少于8个，或者所有值为0，或者标准差为0，则返回空的insights
+    # DEBUG 此处修改为3个
+    if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(
             sorted_values) == 0:
         return insights  # too few data or all zero
 
+    # 检测离群值
     result = outlier_detection(sorted_values, 2)
     if result:
         outliers, lower_threshold, upper_threshold = result
+        # 如果存在离群值且数量小于3
         if len(outliers) != 0 and len(outliers) < 3:
             ins_type = 'outlier'
             for outlier in outliers:
-                index = np.where(sorted_values == outlier)[0]
-                if outlier < lower_threshold:
-                    ins_score = (sorted_values[index] -
-                                 sorted_values.mean()) / sorted_values.std()
-                    ins_score = -ins_score
-                    # ins_score = min(ins_score, 3)  # Cap at 3
-                    # ins_score = ins_score / 3  # Normalize to [0, 1]
-                    min_score = 0.6
-                    max_score = 3.7
-                    ins_score = (ins_score - min_score) / (
-                        max_score - min_score)  # Normalize
-                    ins_score = max(0, min(1, ins_score))
-                    ins_score = float(ins_score)
-                    description = generate_outlier_description(
-                        sorted_d, index, 'lower')
-                    insights.append({
-                        "ins_type": ins_type,
-                        "ins_score": ins_score,
-                        "ins_description": description
-                    })
-                elif outlier > upper_threshold:
-                    ins_score = (sorted_values[index] -
-                                 sorted_values.mean()) / sorted_values.std()
-                    min_score = 0.6
-                    max_score = 3.7
-                    ins_score = (ins_score - min_score) / (
-                        max_score - min_score)  # Normalize
-                    ins_score = max(0, min(1, ins_score))
-                    ins_score = float(ins_score)
-                    description = generate_outlier_description(
-                        sorted_d, index, 'higher')
-                    insights.append({
-                        "ins_type": ins_type,
-                        "ins_score": ins_score,
-                        "ins_description": description
-                    })
+                indices = np.where(sorted_values == outlier)[0]
+                for index in indices:
+                    index = [index]
+                    if outlier < lower_threshold:
+                        print("outlier < lower_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
+                        ins_score = (sorted_values[index] - sorted_values.mean()) / sorted_values.std()
+                        ins_score = -ins_score
+                        # ins_score = min(ins_score, 3)  # Cap at 3
+                        # ins_score = ins_score / 3  # Normalize to [0, 1]
+                        min_score = 0.6
+                        max_score = 3.7
+                        ins_score = (ins_score - min_score) / (
+                            max_score - min_score)  # Normalize
+                        ins_score = max(0, min(1, ins_score))
+                        ins_score = float(ins_score)
+                        description = generate_outlier_description(
+                            sorted_d, index, 'lower')
+                        insights.append({
+                            "ins_type": ins_type,
+                            "ins_score": ins_score,
+                            "ins_description": description
+                        })
+                    elif outlier > upper_threshold:
+                        print("outlier > upper_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
+                        ins_score = (sorted_values[index] -
+                                     sorted_values.mean()) / sorted_values.std()
+                        min_score = 0.6
+                        max_score = 3.7
+                        ins_score = (ins_score - min_score) / (
+                            max_score - min_score)  # Normalize
+                        ins_score = max(0, min(1, ins_score))
+                        ins_score = float(ins_score)
+                        description = generate_outlier_description(
+                            sorted_d, index, 'higher')
+                        insights.append({
+                            "ins_type": ins_type,
+                            "ins_score": ins_score,
+                            "ins_description": description
+                        })
 
             return insights
         else:
-            # else no outlier
+            # 否则无离群值
             return insights
     else:
-        # else no outlier
+        # 否则无离群值
         return insights
 
 
@@ -116,6 +147,8 @@ def calc_outlier_temporal(d):
     sorted_d = d.sort_values(by=d.columns[-1], ascending=False)
     sorted_values = sorted_d.iloc[:, -1].values
 
+    sorted_values = preprocess(sorted_values)
+
     if len(sorted_values) < 5 or np.sum(sorted_values) == 0 or np.std(
             sorted_values) == 0:
         return insights  # too few data or all zero
@@ -127,44 +160,46 @@ def calc_outlier_temporal(d):
             ins_type = 'outlier-temporal'
             # max_ins_score = 0
             for outlier in outliers:
-                index = np.where(sorted_values == outlier)[0]
-                if outlier < lower_threshold:
-                    ins_score = (sorted_values[index] -
-                                 sorted_values.mean()) / sorted_values.std()
-                    ins_score = -ins_score
-                    # ins_score = min(ins_score, 3)  # Cap at 3
-                    # ins_score = ins_score / 3  # Normalize to [0, 1]
-                    min_score = 0.6
-                    max_score = 3.7
-                    ins_score = (ins_score - min_score) / (
+                indices = np.where(sorted_values == outlier)[0]
+                for index in indices:
+                    index = [index]
+                    if outlier < lower_threshold:
+                        ins_score = (sorted_values[index] -
+                                     sorted_values.mean()) / sorted_values.std()
+                        ins_score = -ins_score
+                        # ins_score = min(ins_score, 3)  # Cap at 3
+                        # ins_score = ins_score / 3  # Normalize to [0, 1]
+                        min_score = 0.6
+                        max_score = 3.7
+                        ins_score = (ins_score - min_score) / (
+                                max_score - min_score)  # Normalize
+                        ins_score = max(0, min(1, ins_score))
+                        ins_score = float(ins_score)
+                        description = generate_outlier_description(
+                            sorted_d, index, 'lower')
+                        insights.append({
+                            "ins_type": ins_type,
+                            "ins_score": ins_score,
+                            "ins_description": description
+                        })
+                    elif outlier > upper_threshold:
+                        ins_score = (sorted_values[index] -
+                                     sorted_values.mean()) / sorted_values.std()
+                        min_score = 0.6
+                        max_score = 3.7
+                        ins_score = (ins_score - min_score) / (
                             max_score - min_score)  # Normalize
-                    ins_score = max(0, min(1, ins_score))
-                    ins_score = float(ins_score)
-                    description = generate_outlier_description(
-                        sorted_d, index, 'lower')
-                    insights.append({
-                        "ins_type": ins_type,
-                        "ins_score": ins_score,
-                        "ins_description": description
-                    })
-                elif outlier > upper_threshold:
-                    ins_score = (sorted_values[index] -
-                                 sorted_values.mean()) / sorted_values.std()
-                    min_score = 0.6
-                    max_score = 3.7
-                    ins_score = (ins_score - min_score) / (
-                        max_score - min_score)  # Normalize
-                    ins_score = max(0, min(1, ins_score))
-                    ins_score = float(ins_score)
-                    description = generate_outlier_description(
-                        sorted_d, index, 'higher')
-                    insights.append({
-                        "ins_type": ins_type,
-                        "ins_score": ins_score,
-                        "ins_description": description
-                    })
-                # if ins_score > max_ins_score:
-                #     max_ins_score = ins_score
+                        ins_score = max(0, min(1, ins_score))
+                        ins_score = float(ins_score)
+                        description = generate_outlier_description(
+                            sorted_d, index, 'higher')
+                        insights.append({
+                            "ins_type": ins_type,
+                            "ins_score": ins_score,
+                            "ins_description": description
+                        })
+                    # if ins_score > max_ins_score:
+                    #     max_ins_score = ins_score
             return insights
         else:
             # else no outlier
@@ -304,6 +339,8 @@ def calc_shape_insight(d):
 
 
 def test_slope(d):
+    d = preprocess(d)
+
     if np.std(d) == 0:  # all the same, no slope
         return "no_slope", 0
     # Fit X to a line by linear regression
@@ -426,6 +463,9 @@ def calc_distribution_insight(d):
     d_value = d.iloc[:, -1].values
     # remove all zeros when calculating distribution insight
     d_value = d_value[d_value != 0]
+
+    d_value = preprocess(d_value)
+
     d_value = d_value.astype(float)
 
     if d_value.shape[0] <= 5:
@@ -539,3 +579,104 @@ def outlier_score(data_point, data):
     max_z = np.max(z_scores)
     outlier_score = (data_point - min_z) / (max_z - min_z)
     return outlier_score
+
+
+def calc_insight(scope_data):
+    # 综合计算各种 insight
+    
+    insight_descriptions = []
+    
+    ins_type = ''
+    ins_score = 0
+    ins_description = ""
+    if check_is_temporal(scope_data):
+        ins_type, ins_score, ins_description = calc_shape_insight(scope_data)
+        if ins_score > 0:
+            insight_descriptions.append(ins_description)
+        # ins_type, ins_score, ins_description = calc_outlier_temporal(scope_data)
+        insights = calc_outlier_temporal(scope_data)
+        for insight in insights:
+            if insight["ins_score"] > 0:
+                insight_descriptions.append(insight["ins_description"])
+    else:
+        ins_type, ins_score, ins_description = calc_point_insight(scope_data)
+        if ins_score > 0:
+            insight_descriptions.append(ins_description)
+        # ins_type, ins_score, ins_description = calc_outlier(scope_data)
+        insights = calc_outlier(scope_data)
+        for insight in insights:
+            if insight["ins_score"] > 0:
+                insight_descriptions.append(insight["ins_description"])
+        ins_type, ins_score, ins_description = calc_distribution_insight(scope_data)
+        if ins_score > 0:
+            insight_descriptions.append(ins_description)
+    
+    return insight_descriptions
+    
+if __name__ == '__main__':
+
+
+    result = {}
+
+    # with open(f'csv_path.txt', 'r') as file:
+    #     for line in file:
+    #         filepath = line.strip()
+    #         filename = os.path.basename(filepath)
+    #
+    #         key = filename[:-4] # key为filename去掉.csv的部分
+    #
+    #         df = pd.read_csv(filepath)
+    #         df = preprocess(df)
+    #         insight_descriptions = calc_insight(df)
+    #         if len(insight_descriptions) > 0:
+    #             value = {
+    #                 "insight_descriptions": insight_descriptions
+    #             }
+
+    with open(BASE_DIR + r'\NVBench.json', 'r', encoding='utf-8') as file:
+        nvBench = json.load(file)
+        # 遍历 nvBench
+        for key in nvBench:
+            print(f"Processing {key}...")
+
+            # 从 NVBench.json 获取 vis_obj
+            vis_obj = nvBench[key]["vis_obj"]
+
+            # 从 VEGA_LITE_DIR\key_vega_lite.json 获取 vega_lite
+            vega_lite_path = VEGA_LITE_DIR + fr"\{key}_vega_lite.json"
+            if not os.path.exists(vega_lite_path):
+                print(f"File {vega_lite_path} does not exist, skipping...")
+                continue
+            with open(vega_lite_path, 'r', encoding='utf-8') as file:
+                vega_lite = json.load(file)
+
+                # 从 CSV_DIR\key.csv 获取 csv
+                csv_filepath = CSV_DIR + fr"\{key}.csv"
+                if not os.path.exists(csv_filepath):
+                    print(f"File {csv_filepath} does not exist, skipping...")
+                    continue
+                # 从 csv 提取 insight，形成 insight_descriptions
+                df = pd.read_csv(csv_filepath)
+                insight_descriptions = calc_insight(df)
+                if len(insight_descriptions) > 0:
+                    """
+                    "8": {
+                        "vega_lite": {
+                            ...
+                        },
+                        "insight_descriptions": [
+                            "The sales of brand PS4 dominates among all brands.",
+                            "The sales proportion of brand PS4 and PS5 is significantly higher than that of other brands."
+                        ]
+                    }
+                    """
+                    value = {
+                        # "vis_obj": vis_obj,
+                        "vega_lite": vega_lite,
+                        "insight_descriptions": insight_descriptions
+                    }
+                    result[key] = value
+
+    # 将 result 以 UTF-8 写入 nvBench_insight.json
+    with open('NVBench_insight.json', 'w', encoding='utf-8') as file:
+        json.dump(result, file, indent=4)
