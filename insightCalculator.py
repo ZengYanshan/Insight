@@ -1,10 +1,7 @@
-# 提取 insight ，包括类型、得分、描述
-
-BASE_DIR = r"D:\projects\nvBench"
-DATASET_DIR = BASE_DIR + r"\dataset_nvBench"
-GROUND_TRUTH_DIR = DATASET_DIR + r"\ground_truth"
-CSV_DIR = DATASET_DIR + r"\csv"
-VEGA_LITE_DIR = DATASET_DIR + r"\vega_lite"
+"""
+提取 insight ，包括类型、得分、描述
+类型：dominance、top2、outlier、outlier-temporal、trend、correlation、correlation-temporal、evenness、skewness、kurtosis
+"""
 
 import json
 import os
@@ -76,8 +73,7 @@ def calc_outlier(d):
     sorted_values = preprocess(sorted_values)
 
     # 如果数据量少于8个，或者所有值为0，或者标准差为0，则返回空的insights
-    # DEBUG 此处修改为3个
-    if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(
+    if len(sorted_values) < 8 or np.sum(sorted_values) == 0 or np.std(
             sorted_values) == 0:
         return insights  # too few data or all zero
 
@@ -93,7 +89,7 @@ def calc_outlier(d):
                 for index in indices:
                     index = [index]
                     if outlier < lower_threshold:
-                        print("outlier < lower_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
+                        # print("outlier < lower_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
                         ins_score = (sorted_values[index] - sorted_values.mean()) / sorted_values.std()
                         ins_score = -ins_score
                         # ins_score = min(ins_score, 3)  # Cap at 3
@@ -112,7 +108,7 @@ def calc_outlier(d):
                             "ins_description": description
                         })
                     elif outlier > upper_threshold:
-                        print("outlier > upper_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
+                        # print("outlier > upper_threshold", sorted_values[index], sorted_values.mean(), sorted_values.std())
                         ins_score = (sorted_values[index] -
                                      sorted_values.mean()) / sorted_values.std()
                         min_score = 0.6
@@ -584,7 +580,7 @@ def outlier_score(data_point, data):
 def calc_insight(scope_data):
     # 综合计算各种 insight
     
-    insight_descriptions = []
+    insight_list = []
     
     ins_type = ''
     ins_score = 0
@@ -592,55 +588,74 @@ def calc_insight(scope_data):
     if check_is_temporal(scope_data):
         ins_type, ins_score, ins_description = calc_shape_insight(scope_data)
         if ins_score > 0:
-            insight_descriptions.append(ins_description)
+            insight = {
+                "ins_type": ins_type,
+                "ins_score": ins_score,
+                "ins_description": ins_description
+            }
+            insight_list.append(insight)
+
+        ins_type, ins_score, ins_description = calc_compound_insight(scope_data)
+        if ins_score > 0:
+            insight = {
+                "ins_type": ins_type,
+                "ins_score": ins_score,
+                "ins_description": ins_description
+            }
+            insight_list.append(insight)
+
         # ins_type, ins_score, ins_description = calc_outlier_temporal(scope_data)
         insights = calc_outlier_temporal(scope_data)
         for insight in insights:
             if insight["ins_score"] > 0:
-                insight_descriptions.append(insight["ins_description"])
+                insight_list.append(insight)
     else:
         ins_type, ins_score, ins_description = calc_point_insight(scope_data)
         if ins_score > 0:
-            insight_descriptions.append(ins_description)
+            insight = {
+                "ins_type": ins_type,
+                "ins_score": ins_score,
+                "ins_description": ins_description
+            }
+            insight_list.append(insight)
+
         # ins_type, ins_score, ins_description = calc_outlier(scope_data)
         insights = calc_outlier(scope_data)
         for insight in insights:
             if insight["ins_score"] > 0:
-                insight_descriptions.append(insight["ins_description"])
+                insight_list.append(insight)
+
         ins_type, ins_score, ins_description = calc_distribution_insight(scope_data)
         if ins_score > 0:
-            insight_descriptions.append(ins_description)
+            insight = {
+                "ins_type": ins_type,
+                "ins_score": ins_score,
+                "ins_description": ins_description
+            }
+            insight_list.append(insight)
     
-    return insight_descriptions
+    return insight_list
     
 if __name__ == '__main__':
+    BASE_DIR = r"D:\projects\nvBench"
+    DATASET_DIR = BASE_DIR + r"\dataset_nvBench"
+    GROUND_TRUTH_DIR = DATASET_DIR + r"\ground_truth"
+    CSV_DIR = DATASET_DIR + r"\csv"
+    VEGA_LITE_DIR = DATASET_DIR + r"\vega_lite"
 
 
-    result = {}
-
-    # with open(f'csv_path.txt', 'r') as file:
-    #     for line in file:
-    #         filepath = line.strip()
-    #         filename = os.path.basename(filepath)
-    #
-    #         key = filename[:-4] # key为filename去掉.csv的部分
-    #
-    #         df = pd.read_csv(filepath)
-    #         df = preprocess(df)
-    #         insight_descriptions = calc_insight(df)
-    #         if len(insight_descriptions) > 0:
-    #             value = {
-    #                 "insight_descriptions": insight_descriptions
-    #             }
+    result_obj = {}
+    result_list = []
 
     with open(BASE_DIR + r'\NVBench.json', 'r', encoding='utf-8') as file:
+        index = 1
         nvBench = json.load(file)
         # 遍历 nvBench
         for key in nvBench:
             print(f"Processing {key}...")
 
             # 从 NVBench.json 获取 vis_obj
-            vis_obj = nvBench[key]["vis_obj"]
+            # vis_obj = nvBench[key]["vis_obj"]
 
             # 从 VEGA_LITE_DIR\key_vega_lite.json 获取 vega_lite
             vega_lite_path = VEGA_LITE_DIR + fr"\{key}_vega_lite.json"
@@ -657,26 +672,48 @@ if __name__ == '__main__':
                     continue
                 # 从 csv 提取 insight，形成 insight_descriptions
                 df = pd.read_csv(csv_filepath)
-                insight_descriptions = calc_insight(df)
-                if len(insight_descriptions) > 0:
+                insight_list = calc_insight(df)
+                # if len(insight_descriptions) > 0:
+                #     """
+                #     "8": {
+                #         "vega_lite": {
+                #             ...
+                #         },
+                #         "insight_descriptions": [
+                #             "The sales of brand PS4 dominates among all brands.",
+                #             "The sales proportion of brand PS4 and PS5 is significantly higher than that of other brands."
+                #         ]
+                #     }
+                #     """
+                #     value = {
+                #         # "vis_obj": vis_obj,
+                #         "vega_lite": vega_lite,
+                #         "insight_descriptions": insight_descriptions
+                #     }
+                #     result[key] = value
+
+                for insight in insight_list:
                     """
-                    "8": {
-                        "vega_lite": {
-                            ...
-                        },
-                        "insight_descriptions": [
-                            "The sales of brand PS4 dominates among all brands.",
-                            "The sales proportion of brand PS4 and PS5 is significantly higher than that of other brands."
-                        ]
+                    index: {
+                        "key": "8",
+                        "type": "dominance",
+                        "description": "The sales of brand PS4 dominates among all brands.",
                     }
                     """
                     value = {
-                        # "vis_obj": vis_obj,
-                        "vega_lite": vega_lite,
-                        "insight_descriptions": insight_descriptions
+                        "key": key,
+                        "type": insight["ins_type"],
+                        "description": insight["ins_description"]
                     }
-                    result[key] = value
+                    result_obj[index] = value
+                    result_list.append(value)
+                    index += 1
 
-    # 将 result 以 UTF-8 写入 nvBench_insight.json
-    with open('NVBench_insight.json', 'w', encoding='utf-8') as file:
-        json.dump(result, file, indent=4)
+    # 将 result_obj 以 UTF-8 写入 nvBench_insight.json
+    with open('insight_nvBench.json', 'w', encoding='utf-8') as file:
+        json.dump(result_obj, file)
+    # 将 result_list 以 UTF-8 写入 nvBench_insight.js
+    with open('insight_nvBench.js', 'w', encoding='utf-8') as file:
+        file.write("const insight_nvBench = ")
+        json.dump(result_list, file)
+        file.write(";")
