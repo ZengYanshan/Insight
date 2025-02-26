@@ -10,16 +10,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import linregress, pearsonr, skewtest, kurtosistest, skew, kurtosis, zscore, kstest
 
-def preprocess(sorted_values):
-    # 尝试将 sorted_values 转换为数值类型，无法转换的值将被设置为 NaN
-    numeric_values = pd.to_numeric(sorted_values, errors='coerce')
-    # 将日期字符串转换为时间戳
-    date_values = pd.to_datetime(sorted_values, errors='coerce').astype(np.int64) // 10 ** 9
-    # 合并数值和时间戳，优先使用数值
-    sorted_values = np.where(np.isnan(numeric_values), date_values, numeric_values)
-    # 移除 NaN 值
-    sorted_values = sorted_values[~np.isnan(sorted_values)]
-    return sorted_values
+
 
 def calc_point_insight(d, no_aggr=None):
     ins_type = ''
@@ -31,7 +22,7 @@ def calc_point_insight(d, no_aggr=None):
     # the value column
     sorted_values = sorted_d.iloc[:, -1].values
 
-    sorted_values = preprocess(sorted_values)
+    # sorted_values = preprocess(sorted_values)
 
     # if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(sorted_values) == 0 or no_aggr:
     if len(sorted_values) < 3 or np.sum(sorted_values) == 0 or np.std(
@@ -69,8 +60,6 @@ def calc_outlier(d):
     # 按照最后一列的值降序排序数据
     sorted_d = d.sort_values(by=d.columns[-1], ascending=False)
     sorted_values = sorted_d.iloc[:, -1].values
-
-    sorted_values = preprocess(sorted_values)
 
     # 如果数据量少于8个，或者所有值为0，或者标准差为0，则返回空的insights
     if len(sorted_values) < 8 or np.sum(sorted_values) == 0 or np.std(
@@ -142,8 +131,6 @@ def calc_outlier_temporal(d):
 
     sorted_d = d.sort_values(by=d.columns[-1], ascending=False)
     sorted_values = sorted_d.iloc[:, -1].values
-
-    sorted_values = preprocess(sorted_values)
 
     if len(sorted_values) < 5 or np.sum(sorted_values) == 0 or np.std(
             sorted_values) == 0:
@@ -335,7 +322,7 @@ def calc_shape_insight(d):
 
 
 def test_slope(d):
-    d = preprocess(d)
+    # d = preprocess(d)
 
     if np.std(d) == 0:  # all the same, no slope
         return "no_slope", 0
@@ -460,7 +447,7 @@ def calc_distribution_insight(d):
     # remove all zeros when calculating distribution insight
     d_value = d_value[d_value != 0]
 
-    d_value = preprocess(d_value)
+    # d_value = preprocess(d_value)
 
     d_value = d_value.astype(float)
 
@@ -475,7 +462,7 @@ def calc_distribution_insight(d):
     # evenness
     e = abs(d_value.std() / d_value.mean())
     # _, p_e = kstest(d_value, 'uniform', args=(0, 1))
-    if e < 0.5:
+    if e < 0.1:
         has_evenness = True
         ins_type = 'evenness'
         ins_score = 1 - e
@@ -635,6 +622,25 @@ def calc_insight(scope_data):
             insight_list.append(insight)
     
     return insight_list
+
+def is_value(series):
+    """
+    判断 series 是否为数值类型
+    :param series: pd.Series
+    :return: bool
+    """
+    return pd.api.types.is_numeric_dtype(series)
+
+def move_value_col_to_end(df):
+    """
+    将数值列移动到最后一列
+    :param df: pd.DataFrame
+    :return: pd.DataFrame
+    """
+    for column in df.columns:
+        if is_value(df[column]):
+            df = df[[col for col in df.columns if col != column] + [column]]
+    return df
     
 if __name__ == '__main__':
     BASE_DIR = r"D:\projects\nvBench"
@@ -672,6 +678,8 @@ if __name__ == '__main__':
                     continue
                 # 从 csv 提取 insight，形成 insight_descriptions
                 df = pd.read_csv(csv_filepath)
+                # 将数值列移动到最后一列
+                df = move_value_col_to_end(df)
                 insight_list = calc_insight(df)
                 # if len(insight_descriptions) > 0:
                 #     """
