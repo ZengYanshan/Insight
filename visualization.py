@@ -17,6 +17,10 @@ class VisualForm:
         self.create_vegalite()
 
     def create_vegalite(self):
+        """
+        根据洞察类型调用相应的图表创建函数，生成 Vega-Lite 规范并将其转换为 JSON 格式。
+        :return: 
+        """
         func_list = {
             'outlier': create_box_plot,
             'outlier-temporal': create_trail_plot,
